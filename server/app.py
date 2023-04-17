@@ -76,8 +76,12 @@ class Tickets(Resource):
     def post(self):
         data = request.get_json()
         new_ticket = Ticket(
-            name=data['name'],
-            age=data['age'],
+            event_name=data['event_name'],
+            date=data['date'],
+            description=data['description'],
+            age_restriction=data['age_restriction'],
+            fan_id=data['fan_id'],
+            venue_id=data['venue_id']
         )
         db.session.add(new_ticket)
         db.session.commit()
@@ -125,7 +129,8 @@ class Venues(Resource):
         data = request.get_json()
         new_venue = Venue(
             name=data['name'],
-            age=data['age'],
+            location=data['location'],
+            capacity=data['capacity']
         )
         db.session.add(new_venue)
         db.session.commit()
