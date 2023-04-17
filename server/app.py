@@ -9,7 +9,7 @@ from flask_migrate import Migrate
 
 # Local imports
 from config import app, db, api
-from models import Fan, Venue, Concert
+from models import Fan
 
 # Views go here!
 class HomePage(Resource):
@@ -64,7 +64,7 @@ class FanByID(Resource):
         except:
             db.session.rollback()
 
-        return make_response({'message': 'The fan and their intended concert have been deleted'}, 200))
+        return make_response({'message': 'The fan and their intended concert have been deleted'}, 200)
 api.add_resource(FanByID, '/fans/<int:id>')
 
 if __name__ == '__main__':
