@@ -24,14 +24,14 @@ if __name__ == '__main__':
         f2 = Fan(username='123toast', first_name='Marcus', last_name='Hidalgo', dob=date(1996, 6, 8))
         fans = [f1, f2]
 
-        v1 = Venue(name='Stardust', location='Orlando, FL', capacity=200)
-        v2 = Venue(name='The Bar', location='Online', capacity=45)
-        v3 = Venue(name='Elsewhere (The Hall)', location='Brooklyn, NY', capacity=675)
+        v1 = Venue(name='Stardust', location='Orlando, FL', capacity=200, image='https://bungalower.com/wp-content/uploads/2017/06/BEK_3494-1024x683.jpg')
+        v2 = Venue(name='The Bar', location='Online', capacity=45, image='https://images.squarespace-cdn.com/content/v1/5cbf562816b6400ee5dc5f7e/1588008787320-HCZWQUF5UW5V6SURPYRB/DSC_9058-Edit.jpg')
+        v3 = Venue(name='Elsewhere (The Hall)', location='Brooklyn, NY', capacity=675, image='https://www.datocms-assets.com/46309/1631108277-the-hallcarousel3.jpg')
         venues=[v1, v2, v3]
 
-        e1 = Event(name='A Very Toasty Tour', date=date(2023, 6, 9), description='Best night of ur freaking life', venue=v1)
-        e2 = Event(name='Happy Hour', date=date(2023, 4, 21), description="There's always an afterparty...", venue=v2, age_restriction=True)
-        e3 = Event(name='TimeCop 1983', date=date(2023, 9, 15), description='Synthwave to travel space and time', venue=v3)
+        e1 = Event(name='A Very Toasty Tour', date=date(2023, 6, 9), description='Best night of ur freaking life', image='https://pbs.twimg.com/media/FqTmBYIWYAEG_cf?format=jpg&name=large', venue=v1)
+        e2 = Event(name='Happy Hour', date=date(2023, 4, 21), description="There's always an afterparty...", image='https://assets.entrepreneur.com/content/3x2/2000/20160129160823-happy-hour-coworkers-boss-pub-bar.jpeg', venue=v2, age_restriction=True)
+        e3 = Event(name='TimeCop1983', date=date(2023, 9, 15), description='Synthwave to travel space and time', image='https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Timecop1983_%28photo_by_Lionne_van_der_Hagen%29.jpg/1200px-Timecop1983_%28photo_by_Lionne_van_der_Hagen%29.jpg',  venue=v3)
         events = [e1, e2]
 
         t1 = Ticket(price=10, fan=f1, event=e1)

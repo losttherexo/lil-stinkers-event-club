@@ -1,8 +1,8 @@
-"""tables created
+"""tables
 
-Revision ID: 85c12db8d79c
+Revision ID: 3b3d5e4c0c4d
 Revises: 
-Create Date: 2023-04-17 14:22:11.366150
+Create Date: 2023-04-17 16:26:24.384730
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '85c12db8d79c'
+revision = '3b3d5e4c0c4d'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -31,6 +31,7 @@ def upgrade():
     sa.Column('name', sa.String(), nullable=False),
     sa.Column('location', sa.String(), nullable=False),
     sa.Column('capacity', sa.Integer(), nullable=False),
+    sa.Column('image', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('events',
@@ -38,6 +39,7 @@ def upgrade():
     sa.Column('name', sa.String(), nullable=False),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('description', sa.String(), nullable=False),
+    sa.Column('image', sa.String(), nullable=True),
     sa.Column('age_restriction', sa.Boolean(), nullable=False),
     sa.Column('venue_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['venue_id'], ['venues.id'], name=op.f('fk_events_venue_id_venues')),
@@ -45,7 +47,7 @@ def upgrade():
     )
     op.create_table('tickets',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('price', sa.Boolean(), nullable=False),
+    sa.Column('price', sa.Integer(), nullable=False),
     sa.Column('fan_id', sa.Integer(), nullable=False),
     sa.Column('event_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['event_id'], ['events.id'], name=op.f('fk_tickets_event_id_events')),

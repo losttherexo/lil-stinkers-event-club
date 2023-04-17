@@ -24,6 +24,7 @@ class Venue(db.Model, SerializerMixin):
     name = db.Column(db.String, nullable=False)
     location = db.Column(db.String, nullable=False)
     capacity = db.Column(db.Integer, nullable=False)
+    image = db.Column(db.String)
 
     events = db.relationship('Event', backref='venue')
 
@@ -36,6 +37,7 @@ class Event(db.Model, SerializerMixin):
     name = db.Column(db.String, nullable=False)
     date = db.Column(db.Date, nullable=False)
     description = db.Column(db.String, nullable=False)
+    image = db.Column(db.String)
     age_restriction = db.Column(db.Boolean, nullable=False, default=False)
 
     tickets = db.relationship('Ticket', backref='event')
