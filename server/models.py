@@ -39,6 +39,7 @@ class Event(db.Model, SerializerMixin):
     description = db.Column(db.String, nullable=False)
     image = db.Column(db.String)
     age_restriction = db.Column(db.Boolean, nullable=False, default=False)
+    price = db.Column(db.Integer, nullable=False, default=0)
 
     tickets = db.relationship('Ticket', backref='event')
 
@@ -48,7 +49,6 @@ class Ticket(db.Model, SerializerMixin):
     __tablename__ = 'tickets'
 
     id = db.Column(db.Integer, primary_key=True)
-    price = db.Column(db.Integer, nullable=False, default=0)
 
     fan_id = db.Column(db.Integer, db.ForeignKey('fans.id'), nullable=False)
     event_id = db.Column(db.Integer, db.ForeignKey('events.id'), nullable=False)
