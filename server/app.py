@@ -16,6 +16,21 @@ class HomePage(Resource):
     def get(self):
         return {'message': '200: Welcome to our Home Page'}, 200
 
+class SignUp(Resource):
+    def post(self):
+        data=request.get_json()
+        new_fan = Fan(
+            username=data['username'],
+            password = data['password'],
+            password_confirmation = data['password_confirmation'],
+            first_name=data['first_name'],
+            last_name=data['last_name'],
+            dob=data['dob'],
+        )
+        db.session.add(new_fan)
+        db.session.commit()
+        return {'message': '201, a new fan has been added!'}, 201
+
 class Login(Resource):
 
     def post(self):
@@ -23,12 +38,14 @@ class Login(Resource):
         username = request.get_json().get('username')
         user = Fan.query.filter(Fan.username == username).first()
 
-        if user:
+        password = request.get_json()['password']
+
+        if user.authenticate(password):
 
             session['fan_id'] = user.id
             return user.to_dict(), 200
 
-        return {}, 401
+        return {'error': 'Invalid username or password'}, 401
 
 class Logout(Resource):
 
@@ -312,6 +329,7 @@ api.add_resource(VenueByID, '/venues/<int:id>')
 api.add_resource(Events, '/events')
 api.add_resource(EventByID, '/events/<int:id>')
 api.add_resource(ClearSession, '/clear', endpoint='clear')
+api.add_resource(SignUp, '/signup', endpoint='signup')
 api.add_resource(Login, '/login', endpoint='login')
 api.add_resource(Logout, '/logout', endpoint='logout')
 api.add_resource(CheckSession, '/check_session', endpoint='check_session')
