@@ -12,3 +12,30 @@
     padding-bottom:15px;
     font-family: 'Poppins', sans-serif;
 }
+
+.logout {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    padding-top:15px;
+    padding-bottom:15px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.logoutbtn {
+    color: rgb(255, 229, 128);
+    font-size: 20px;
+    font-weight: bold;
+    padding-top:15px;
+    padding-bottom:15px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.NavLogin {
+    color: rgb(255, 229, 128);
+    font-size: 20px;
+    font-weight: bold;
+    padding-top:15px;
+    padding-bottom:15px;
+    font-family: 'Poppins', sans-serif;
+}
