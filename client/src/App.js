@@ -15,6 +15,7 @@ import Profile from "./Profile"
 function App() {
 
     const [user, setUser] = useState(null);
+    // const [query, setQuery] = useState('')
 
     useEffect(() => {
         fetch("/check_session").then((response) => {
@@ -42,6 +43,9 @@ function App() {
 
     const [eventsArray, setEventsArray] = useState([])
 
+    // const search = eventsArray.filter((event) =>
+    // event.date.includes(query))
+
     useEffect(() => {
         fetch('http://localhost:5555/events')
             .then(r => r.json())
@@ -55,6 +59,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home user={user}/>} />
                     <Route path="/venues" element={<Venues venuesArray={venuesArray}/>} />
+                    {/* <Route path="/events" element={<Events eventsArray={eventsArray} search={search}/>} /> */}
                     <Route path="/events" element={<Events eventsArray={eventsArray}/>} />
                     <Route path="/login" element={<Login onLogin={handleLogin}/>} />
                     <Route path="/signup" element={<SignUp />} />
