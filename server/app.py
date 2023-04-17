@@ -9,7 +9,7 @@ from flask_migrate import Migrate
 
 # Local imports
 from config import app, db, api
-from models import Fan, Ticket, Venue, Cart
+from models import Fan, Ticket, Venue, Cart, Event
 
 # Views go here!
 class HomePage(Resource):
@@ -207,6 +207,55 @@ class CartByID(Resource):
 
         return make_response({'message': 'The item/cart has been deleted'}, 200)
 
+class Events(Resource):
+    def get(self):
+        return make_response([event.to_dict() for event in Event.query.all()], 200)
+
+    def post(self):
+        data = request.get_json()
+        new_event = Event(
+            name=data['name'],
+            date=data['date'],
+            description=data['description'],
+            age_restriction=data['age_restriction'],
+            venue_id=data['venue_id']
+        )
+        db.session.add(new_event)
+        db.session.commit()
+        return {'message': '201, a new event has been created!'}, 201
+
+class EventByID(Resource):
+    def get(self, id):
+        if id not in [event.id for event in Event.query.all()]:
+            return {'error': '404, Event not Found!'}, 404
+
+        return make_response((event for event in Event.query.filter(Event.id==id).first()).to_dict(), 200)
+
+    def patch(self, id):
+        if id not in [event.id for event in Event.query.all()]:
+            return {'error': '404, Event not Found!'}, 404
+
+        data = request.get_json()
+        event = Event.query.filter(Event.id==id).first()
+        for key in data.keys():
+            setattr(event, key , data[key])
+        db.session.add(event)
+        db.session.commit()
+        return make_response(event.to_dict(), 200)
+
+    def delete(self, id):
+        if id not in [event.id for event in Event.query.all()]:
+            return {'error': '404, Event not Found!'}, 404
+        try:
+            db.session.query(Ticket).filter(Ticket.fan_id == id).delete()
+            event = Event.query.filter(Event.id==id).first()
+            db.session.delete(event)
+            db.session.commit()
+        except:
+            db.session.rollback()
+
+        return make_response({'message': 'This event has been terminated!'}, 200)
+
 
 api.add_resource(HomePage, '/')
 api.add_resource(Fans, '/fans')
@@ -217,6 +266,8 @@ api.add_resource(Venues, '/venues')
 api.add_resource(VenueByID, '/venues/<int:id>')
 api.add_resource(Carts, '/carts')
 api.add_resource(CartByID, '/carts/<int:id>')
+api.add_resource(Events, '/events')
+api.add_resource(EventByID, '/events/<int:id>')
 
 
 
