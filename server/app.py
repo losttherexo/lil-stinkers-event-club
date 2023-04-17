@@ -9,14 +9,12 @@ from flask_migrate import Migrate
 
 # Local imports
 from config import app, db, api
-from models import Fan, Ticket, Venue
+from models import Fan, Ticket, Venue, Cart
 
 # Views go here!
 class HomePage(Resource):
     def get(self):
         return {'message': '200: Welcome to our Home Page'}, 200
-
-api.add_resource(HomePage, '/')
 
 class Fans(Resource):
     def get(self):
@@ -33,8 +31,6 @@ class Fans(Resource):
         db.session.add(new_fan)
         db.session.commit()
         return {'message': '201, a new fan has been added!'}, 201
-
-api.add_resource(Fans, '/fans')
 
 class FanByID(Resource):
     def get(self, id):
@@ -67,7 +63,6 @@ class FanByID(Resource):
             db.session.rollback()
 
         return make_response({'message': 'The fan and their tickets have been deleted'}, 200)
-api.add_resource(FanByID, '/fans/<int:id>')
 
 class Tickets(Resource):
     def get(self):
@@ -86,8 +81,6 @@ class Tickets(Resource):
         db.session.add(new_ticket)
         db.session.commit()
         return {'message': '201, a new ticket has been added!'}, 201
-
-api.add_resource(Tickets, '/tickets')
 
 class TicketByID(Resource):
     def get(self, id):
@@ -119,7 +112,6 @@ class TicketByID(Resource):
             db.session.rollback()
 
         return make_response({'message': 'The ticket has been deleted'}, 200)
-api.add_resource(TicketByID, '/tickets/<int:id>')
 
 class Venues(Resource):
     def get(self):
@@ -135,8 +127,6 @@ class Venues(Resource):
         db.session.add(new_venue)
         db.session.commit()
         return {'message': '201, a new venue has been added!'}, 201
-
-api.add_resource(Venues, '/venues')
 
 class VenueByID(Resource):
     def get(self, id):
@@ -169,7 +159,64 @@ class VenueByID(Resource):
             db.session.rollback()
 
         return make_response({'message': 'The venue has been deleted'}, 200)
+
+class Carts(Resource):
+    def get(self):
+        return make_response([cart.to_dict() for cart in Cart.query.all()], 200)
+
+    def post(self):
+        data = request.get_json()
+        new_item = Cart(
+            name=data['name'],
+            location=data['location'],
+            capacity=data['capacity']
+        )
+        db.session.add(new_item)
+        db.session.commit()
+        return {'message': '201, a new item has been added to the cart!'}, 201
+
+class CartByID(Resource):
+    def get(self, id):
+        if id not in [cart.id for cart in Cart.query.all()]:
+            return {'error': '404, Cart Item not Found!'}, 404
+
+        return make_response((cart for cart in Cart.query.filter(Cart.id==id).first()).to_dict(), 200)
+
+    def patch(self, id):
+        if id not in [cart.id for cart in Cart.query.all()]:
+            return {'error': '404, Cart Item not Found!'}, 404
+
+        data = request.get_json()
+        cart = Cart.query.filter(Cart.id==id).first()
+        for key in data.keys():
+            setattr(cart, key , data[key])
+        db.session.add(cart)
+        db.session.commit()
+        return make_response(cart.to_dict(), 200)
+
+    def delete(self, id):
+        if id not in [cart.id for cart in Cart.query.all()]:
+            return {'error': '404, Cart Item not Found!'}, 404
+        try:
+            db.session.query(Ticket).filter(Ticket.fan_id == id).delete()
+            cart = Cart.query.filter(Cart.id==id).first()
+            db.session.delete(cart)
+            db.session.commit()
+        except:
+            db.session.rollback()
+
+        return make_response({'message': 'The item/cart has been deleted'}, 200)
+
+
+api.add_resource(HomePage, '/')
+api.add_resource(Fans, '/fans')
+api.add_resource(FanByID, '/fans/<int:id>')
+api.add_resource(Tickets, '/tickets')
+api.add_resource(TicketByID, '/tickets/<int:id>')
+api.add_resource(Venues, '/venues')
 api.add_resource(VenueByID, '/venues/<int:id>')
+api.add_resource(Carts, '/carts')
+api.add_resource(CartByID, '/carts/<int:id>')
 
 
 
