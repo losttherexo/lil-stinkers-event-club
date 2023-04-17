@@ -42,7 +42,7 @@ class Login(Resource):
 
         # if user.authenticate(password):
         if user:
-
+            session.permanent = True
             session['fan_id'] = user.id
             return user.to_dict(), 200
 
