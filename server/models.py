@@ -21,18 +21,28 @@ class Venue(db.Model):
     location = db.Column(db.String, nullable=False)
     capacity = db.Column(db.Integer, nullable=False)
 
-    tickets = db.relationship('Ticket', backref='venue')
+    events = db.relationship('Event', backref='venue')
 
-
-class Ticket(db.Model):
-    __tablename__ = 'concerts'
+class Event(db.Model):
+    __tablename__ = 'events'
 
     id = db.Column(db.Integer, primary_key=True)
-    event_name = db.Column(db.String, nullable=False)
+    name = db.Column(db.String, nullable=False)
     date = db.Column(db.Date, nullable=False)
     description = db.Column(db.String, nullable=False)
     age_restriction = db.Column(db.Boolean, nullable=False, default=False)
 
-    fan_id = db.Column(db.Integer, db.ForeignKey('fans.id'), nullable=False)
+    tickets = db.relationship('Ticket', backref='event')
+
     venue_id = db.Column(db.Integer, db.ForeignKey('venues.id'), nullable=False)
 
+
+
+class Ticket(db.Model):
+    __tablename__ = 'tickets'
+
+    id = db.Column(db.Integer, primary_key=True)
+    price = db.Column(db.Integer, nullable=False, default=0)
+
+    fan_id = db.Column(db.Integer, db.ForeignKey('fans.id'), nullable=False)
+    event_id = db.Column(db.Integer, db.ForeignKey('events.id'), nullable=False)
