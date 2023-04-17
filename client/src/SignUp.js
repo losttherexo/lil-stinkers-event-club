@@ -79,7 +79,7 @@ function SignUp({ setUser }) {
           value={dob}
           onChange={(e) => setDob(e.target.value)}
         />
-        <button type="submit">Sign Up</button>
+        <button type="submit"><a href='/login'>Sign Up</a></button>
       </form>
     </div>
   );

@@ -38,7 +38,7 @@ function Login({ onLogin }) {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       /> */}
-      <button type="submit">Login</button>
+      <button type="submit"><a href='/events'>Login</a></button>
       <p>Don't have an account? You can <a href='/signup'>Sign up</a> right here</p>
     </form>
   );
