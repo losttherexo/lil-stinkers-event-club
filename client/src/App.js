@@ -6,10 +6,8 @@ import Venues from "./Venues"
 import Events from "./Events"
 import Login from "./Login"
 import {
-    BrowserRouter,
     Routes,
     Route,
-    Link,
   } from "react-router-dom";
 
 function App() {

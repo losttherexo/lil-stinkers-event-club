@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:wght@300&family=Quicksand:wght@300&display=swap');
+
+.NavLink {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    padding-top:15px;
+    padding-bottom:15px;
+    font-family: 'Poppins', sans-serif;
+}
