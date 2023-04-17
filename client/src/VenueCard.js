@@ -4,7 +4,7 @@ function VenueCard({name, location, capacity, events, image}){
     return(
         <div>
             <h1>{name}</h1>
-            <img src={image}/>
+            <img src={image} alt={name}/>
         </div>
     )
 }

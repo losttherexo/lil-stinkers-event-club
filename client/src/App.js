@@ -7,10 +7,8 @@ import Events from "./Events"
 import Login from "./Login"
 import SignUp from "./SignUp"
 import {
-    BrowserRouter,
     Routes,
     Route,
-    Link,
   } from "react-router-dom";
 
 function App() {
