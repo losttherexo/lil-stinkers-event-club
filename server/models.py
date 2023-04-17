@@ -1,5 +1,5 @@
 from sqlalchemy_serializer import SerializerMixin
-from sqlalchemy.ext.hybrid import hybrid_property
+# from sqlalchemy.ext.hybrid import hybrid_property
 from config import db, bcrypt
 
 class Fan(db.Model, SerializerMixin):
@@ -10,32 +10,32 @@ class Fan(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
 
     username = db.Column(db.String, nullable=False)
-    _password_hash = db.Column(db.String, nullable=False)
-    
+    # _password_hash = db.Column(db.String, nullable=False)
+
     first_name = db.Column(db.String, nullable=False)
     last_name = db.Column(db.String, nullable=False)
     dob = db.Column(db.Date, nullable=False)
 
     tickets = db.relationship('Ticket', backref='fan')
 
-    @hybrid_property
-    def password_hash(self):
-        raise Exception('Password hashes may not be viewed.')
+    # @hybrid_property
+    # def password_hash(self):
+    #     raise Exception('Password hashes may not be viewed.')
 
-    @password_hash.setter
-    def password_hash(self, password):
-        # utf-8 encoding and decoding is required in python 3
-        password_hash = bcrypt.generate_password_hash(
-            password.encode('utf-8'))
-        self._password_hash = password_hash.decode('utf-8')
+    # @password_hash.setter
+    # def password_hash(self, password):
+    #     # utf-8 encoding and decoding is required in python 3
+    #     password_hash = bcrypt.generate_password_hash(
+    #         password.encode('utf-8'))
+    #     self._password_hash = password_hash.decode('utf-8')
 
-    def authenticate(self, password):
-        return bcrypt.check_password_hash(
-            self._password_hash, password.encode('utf-8'))
+    # def authenticate(self, password):
+    #     return bcrypt.check_password_hash(
+    #         self._password_hash, password.encode('utf-8'))
 
-    @staticmethod
-    def simple_hash(input):
-        return sum(bytearray(input, encoding='utf-8'))
+    # @staticmethod
+    # def simple_hash(input):
+    #     return sum(bytearray(input, encoding='utf-8'))
 
 class Venue(db.Model, SerializerMixin):
     __tablename__ = 'venues'

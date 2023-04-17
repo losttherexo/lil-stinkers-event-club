@@ -5,7 +5,7 @@ import Navbar from "./Navbar"
 import Venues from "./Venues"
 import Events from "./Events"
 import Login from "./Login"
-import SignUp from "./SignUp"
+// import SignUp from "./SignUp"
 import {
     Routes,
     Route,
@@ -50,23 +50,15 @@ function App() {
   return (
     <div className="App">
         <header className="App-header">
-                <Navbar user={user} onLogout={handleLogout}/>
-                <main>
-                    {user ? (
-                        <Routes>
-                            <Route path="/" element={<Home user={user}/>} />
-                        </Routes>
-                    ) : (
-                        <Routes>
-                            <Route path="/venues" element={<Venues venuesArray={venuesArray}/>} />
-                            <Route path="/events" element={<Events eventsArray={eventsArray}/>} />
-                            <Route path="/login" element={<Login onLogin={handleLogin}/>} />
-                            <Route path="/signup" element={<SignUp />} />
-                            <Route path="*" element={<h1>404 Page Not Found</h1>} />
-                        </Routes>
-
-                    )}
-                </main>
+            <Navbar user={user} onLogout={handleLogout}/>
+                <Routes>
+                    <Route path="/" element={<Home user={user}/>} />
+                    <Route path="/venues" element={<Venues venuesArray={venuesArray}/>} />
+                    <Route path="/events" element={<Events eventsArray={eventsArray}/>} />
+                    <Route path="/login" element={<Login onLogin={handleLogin}/>} />
+                    {/* <Route path="/signup" element={<SignUp />} /> */}
+                    <Route path="*" element={<h1>404 Page Not Found</h1>} />
+                </Routes>
         </header>
     </div>
   );

@@ -19,7 +19,7 @@ function Navbar({user, onLogout}) {
                 </div>
                 {user ? (
                     <div>
-                        <p>Welcome, {user.username}!</p>
+                        <p >Welcome, {user.username}!</p>
                         <button onClick={handleLogout}>Logout</button>
                     </div>
                 ) : (
