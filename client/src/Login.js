@@ -1,10 +1,11 @@
 import { useState } from "react";
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import './index.css';
 
 function Login({ onLogin }) {
   const [username, setUsername] = useState("");
   // const [password, setPassword] = useState("");
+  const nagigate = useNavigate()
   function handleSubmit(e) {
     e.preventDefault();
     fetch("/login", {
@@ -20,6 +21,7 @@ function Login({ onLogin }) {
         // console.log(username);
       }
     });
+    nagigate('/events')
   }
 
   return (
