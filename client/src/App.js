@@ -40,6 +40,14 @@ function App() {
             .then(setVenuesArray)
     },[])
 
+    const [eventsArray, setEventsArray] = useState([])
+
+    useEffect(() => {
+        fetch('http://localhost:5555/events')
+            .then(r => r.json())
+            .then(setEventsArray)
+    },[])
+
   return (
     <div className="App">
         <header className="App-header">
@@ -47,7 +55,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/venues" element={<Venues venuesArray={venuesArray}/>} />
-                    <Route path="/events" element={<Events />} />
+                    <Route path="/events" element={<Events eventsArray={eventsArray}/>} />
                     <Route path="/login" element={<Login onLogin={handleLogin} />} />
                     <Route path="*" element={<h1>404 Page Not Found</h1>} />
                 </Routes>
