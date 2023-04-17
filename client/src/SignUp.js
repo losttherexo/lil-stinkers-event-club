@@ -2,8 +2,8 @@ import React, { useState } from "react";
 
 function SignUp({ setUser }) {
   const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+//   const [password, setPassword] = useState("");
+//   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [dob, setDob] = useState("");
@@ -17,8 +17,8 @@ function SignUp({ setUser }) {
       },
       body: JSON.stringify({
         username,
-        password,
-        password_confirmation: passwordConfirmation,
+        // password,
+        // password_confirmation: passwordConfirmation,
         first_name: firstName,
         last_name: lastName,
         dob: dob
@@ -42,7 +42,7 @@ function SignUp({ setUser }) {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-        <label htmlFor="password">Password</label>
+        {/* <label htmlFor="password">Password</label>
         <input
           type="password"
           id="password"
@@ -57,19 +57,22 @@ function SignUp({ setUser }) {
           value={passwordConfirmation}
           onChange={(e) => setPasswordConfirmation(e.target.value)}
           autoComplete="current-password"
-        />
+        /> */}
+        <label htmlFor="text">First Name: </label>
         <input
           type="text"
           id="first-name"
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
         />
+        <label htmlFor="text">Last Name: </label>
         <input
           type="text"
           id="last-name"
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
         />
+        <label htmlFor="text">Date of Birth: </label>
         <input
           type="date"
           id="dob"

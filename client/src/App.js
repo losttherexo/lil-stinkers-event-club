@@ -5,7 +5,7 @@ import Navbar from "./Navbar"
 import Venues from "./Venues"
 import Events from "./Events"
 import Login from "./Login"
-// import SignUp from "./SignUp"
+import SignUp from "./SignUp"
 import {
     Routes,
     Route,
@@ -56,7 +56,7 @@ function App() {
                     <Route path="/venues" element={<Venues venuesArray={venuesArray}/>} />
                     <Route path="/events" element={<Events eventsArray={eventsArray}/>} />
                     <Route path="/login" element={<Login onLogin={handleLogin}/>} />
-                    {/* <Route path="/signup" element={<SignUp />} /> */}
+                    <Route path="/signup" element={<SignUp />} />
                     <Route path="*" element={<h1>404 Page Not Found</h1>} />
                 </Routes>
         </header>
