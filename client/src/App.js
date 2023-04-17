@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react'
 import Home from "./Home"
 import Navbar from "./Navbar"
 import Venues from "./Venues"
-import Tickets from "./Tickets"
+import Events from "./Events"
 import Login from "./Login"
 import {
     BrowserRouter,
@@ -47,7 +47,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/venues" element={<Venues venuesArray={venuesArray}/>} />
-                    <Route path="/tickets" element={<Tickets />} />
+                    <Route path="/events" element={<Events />} />
                     <Route path="/login" element={<Login onLogin={handleLogin} />} />
                     <Route path="*" element={<h1>404 Page Not Found</h1>} />
                 </Routes>

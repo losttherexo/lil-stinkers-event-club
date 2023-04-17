@@ -13,7 +13,7 @@ function Navbar({user, onLogout}) {
         <nav className="nav">
             <NavLink className="NavLink" to = "./" end>Home</NavLink>
             <NavLink className="NavLink" to = "/venues">Venues</NavLink>
-            <NavLink className="NavLink" to = "/tickets">Tickets</NavLink>
+            <NavLink className="NavLink" to = "/events">Events</NavLink>
             {user ? (
                 <div>
                     <p>Welcome, {user.username}!</p>
