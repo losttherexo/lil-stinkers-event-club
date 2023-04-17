@@ -3,7 +3,7 @@ import VenueCard from './VenueCard'
 
 function Venues({venuesArray}){
 
-    const venueComponents = venuesArray.map(venue => <VenueCard key={venue.id} name={venue.name} location={venue.location} capacity={venue.capacity} events={venue.events}/>)
+    const venueComponents = venuesArray.map(venue => <VenueCard key={venue.id} name={venue.name} location={venue.location} capacity={venue.capacity} events={venue.events} image={venue.image}/>)
 
     return(
         <div>

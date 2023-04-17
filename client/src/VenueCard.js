@@ -1,8 +1,11 @@
 import React from "react"
 
-function VenueCard({name, location, capacity, events}){
+function VenueCard({name, location, capacity, events, image}){
     return(
-        <h1>{name}</h1>
+        <div>
+            <h1>{name}</h1>
+            <img src={image}/>
+        </div>
     )
 }
 
