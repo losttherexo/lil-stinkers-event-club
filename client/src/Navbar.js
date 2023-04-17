@@ -10,8 +10,8 @@ function Navbar({user, onLogout}) {
         }).then(() => onLogout());
     }
     return(
-        <nav classname="nav">
-            <NavLink className="NavLink" exact to = "./">Home</NavLink>
+        <nav className="nav">
+            <NavLink className="NavLink" to = "./" end>Home</NavLink>
             <NavLink className="NavLink" to = "/venues">Venues</NavLink>
             <NavLink className="NavLink" to = "/tickets">Tickets</NavLink>
             {user ? (

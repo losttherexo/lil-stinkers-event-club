@@ -1,7 +1,9 @@
 import React from "react"
 
-function VenueCard(){
+function VenueCard({name, location, capacity, events}){
     return(
-        <h1></h1>
+        <h1>{name}</h1>
     )
 }
+
+export default VenueCard
