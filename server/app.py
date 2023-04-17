@@ -49,6 +49,15 @@ class CheckSession(Resource):
 
         return {}, 401
 
+class ClearSession(Resource):
+
+    def delete(self):
+
+        session['page_views'] = None
+        session['user_id'] = None
+
+        return {}, 204
+
 
 class Fans(Resource):
     def get(self):
@@ -302,6 +311,7 @@ api.add_resource(VenueByID, '/venues/<int:id>')
 # api.add_resource(CartByID, '/carts/<int:id>')
 api.add_resource(Events, '/events')
 api.add_resource(EventByID, '/events/<int:id>')
+api.add_resource(ClearSession, '/clear', endpoint='clear')
 api.add_resource(Login, '/login', endpoint='login')
 api.add_resource(Logout, '/logout', endpoint='logout')
 api.add_resource(CheckSession, '/check_session', endpoint='check_session')
