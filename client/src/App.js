@@ -17,7 +17,7 @@ function App() {
     const [user, setUser] = useState(null);
 
     useEffect(() => {
-        fetch("/check_session").then((response) => {
+        fetch("/login").then((response) => {
             if (response.ok) {
                 response.json().then((user) => setUser(user));
             }
@@ -32,13 +32,21 @@ function App() {
         setUser(null);
     }
 
+    const [venuesArray, setVenuesArray] = useState([])
+
+    useEffect(() => {
+        fetch('http://localhost:5555/venues')
+            .then(r => r.json())
+            .then(setVenuesArray)
+    },[])
+
   return (
     <div className="App">
         <header className="App-header">
                 <Navbar user={user} onLogout={handleLogout} />
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/venues" element={<Venues />} />
+                    <Route path="/venues" element={<Venues venuesArray={venuesArray}/>} />
                     <Route path="/tickets" element={<Tickets />} />
                     <Route path="/login" element={<Login onLogin={handleLogin} />} />
                     <Route path="*" element={<h1>404 Page Not Found</h1>} />
