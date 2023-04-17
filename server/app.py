@@ -9,12 +9,46 @@ from flask_migrate import Migrate
 
 # Local imports
 from config import app, db, api
-from models import Fan, Ticket, Venue, Cart, Event
+from models import Fan, Ticket, Venue, Event
 
 # Views go here!
 class HomePage(Resource):
     def get(self):
         return {'message': '200: Welcome to our Home Page'}, 200
+
+class Login(Resource):
+
+    def post(self):
+
+        username = request.get_json().get('username')
+        user = Fan.query.filter(Fan.username == username).first()
+
+        if user:
+
+            session['fan_id'] = user.id
+            return user.to_dict(), 200
+
+        return {}, 401
+
+class Logout(Resource):
+
+    def delete(self):
+
+        session['fan_id'] = None
+
+        return {}, 204
+
+class CheckSession(Resource):
+
+    def get(self):
+
+        user_id = session['fan_id']
+        if user_id:
+            user = Fan.query.filter(Fan.id == user_id).first()
+            return user.to_dict(), 200
+
+        return {}, 401
+
 
 class Fans(Resource):
     def get(self):
@@ -160,52 +194,52 @@ class VenueByID(Resource):
 
         return make_response({'message': 'The venue has been deleted'}, 200)
 
-class Carts(Resource):
-    def get(self):
-        return make_response([cart.to_dict() for cart in Cart.query.all()], 200)
+# class Carts(Resource):
+#     def get(self):
+#         return make_response([cart.to_dict() for cart in Cart.query.all()], 200)
 
-    def post(self):
-        data = request.get_json()
-        new_item = Cart(
-            name=data['name'],
-            location=data['location'],
-            capacity=data['capacity']
-        )
-        db.session.add(new_item)
-        db.session.commit()
-        return {'message': '201, a new item has been added to the cart!'}, 201
+#     def post(self):
+#         data = request.get_json()
+#         new_item = Cart(
+#             name=data['name'],
+#             location=data['location'],
+#             capacity=data['capacity']
+#         )
+#         db.session.add(new_item)
+#         db.session.commit()
+#         return {'message': '201, a new item has been added to the cart!'}, 201
 
-class CartByID(Resource):
-    def get(self, id):
-        if id not in [cart.id for cart in Cart.query.all()]:
-            return {'error': '404, Cart Item not Found!'}, 404
+# class CartByID(Resource):
+#     def get(self, id):
+#         if id not in [cart.id for cart in Cart.query.all()]:
+#             return {'error': '404, Cart Item not Found!'}, 404
 
-        return make_response((cart for cart in Cart.query.filter(Cart.id==id).first()).to_dict(), 200)
+#         return make_response((cart for cart in Cart.query.filter(Cart.id==id).first()).to_dict(), 200)
 
-    def patch(self, id):
-        if id not in [cart.id for cart in Cart.query.all()]:
-            return {'error': '404, Cart Item not Found!'}, 404
+#     def patch(self, id):
+#         if id not in [cart.id for cart in Cart.query.all()]:
+#             return {'error': '404, Cart Item not Found!'}, 404
 
-        data = request.get_json()
-        cart = Cart.query.filter(Cart.id==id).first()
-        for key in data.keys():
-            setattr(cart, key , data[key])
-        db.session.add(cart)
-        db.session.commit()
-        return make_response(cart.to_dict(), 200)
+#         data = request.get_json()
+#         cart = Cart.query.filter(Cart.id==id).first()
+#         for key in data.keys():
+#             setattr(cart, key , data[key])
+#         db.session.add(cart)
+#         db.session.commit()
+#         return make_response(cart.to_dict(), 200)
 
-    def delete(self, id):
-        if id not in [cart.id for cart in Cart.query.all()]:
-            return {'error': '404, Cart Item not Found!'}, 404
-        try:
-            db.session.query(Ticket).filter(Ticket.fan_id == id).delete()
-            cart = Cart.query.filter(Cart.id==id).first()
-            db.session.delete(cart)
-            db.session.commit()
-        except:
-            db.session.rollback()
+#     def delete(self, id):
+#         if id not in [cart.id for cart in Cart.query.all()]:
+#             return {'error': '404, Cart Item not Found!'}, 404
+#         try:
+#             db.session.query(Ticket).filter(Ticket.fan_id == id).delete()
+#             cart = Cart.query.filter(Cart.id==id).first()
+#             db.session.delete(cart)
+#             db.session.commit()
+#         except:
+#             db.session.rollback()
 
-        return make_response({'message': 'The item/cart has been deleted'}, 200)
+#         return make_response({'message': 'The item/cart has been deleted'}, 200)
 
 class Events(Resource):
     def get(self):
@@ -264,10 +298,13 @@ api.add_resource(Tickets, '/tickets')
 api.add_resource(TicketByID, '/tickets/<int:id>')
 api.add_resource(Venues, '/venues')
 api.add_resource(VenueByID, '/venues/<int:id>')
-api.add_resource(Carts, '/carts')
-api.add_resource(CartByID, '/carts/<int:id>')
+# api.add_resource(Carts, '/carts')
+# api.add_resource(CartByID, '/carts/<int:id>')
 api.add_resource(Events, '/events')
 api.add_resource(EventByID, '/events/<int:id>')
+api.add_resource(Login, '/login', endpoint='login')
+api.add_resource(Logout, '/logout', endpoint='logout')
+api.add_resource(CheckSession, '/check_session', endpoint='check_session')
 
 
 

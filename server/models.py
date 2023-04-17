@@ -36,8 +36,6 @@ class Event(db.Model):
 
     venue_id = db.Column(db.Integer, db.ForeignKey('venues.id'), nullable=False)
 
-
-
 class Ticket(db.Model):
     __tablename__ = 'tickets'
 
