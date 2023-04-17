@@ -5,6 +5,8 @@ from config import db
 class Fan(db.Model):
     __tablename__ = 'fans'
 
+    serialize_rules = ('-tickets',)
+
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, nullable=False)
     first_name = db.Column(db.String, nullable=False)
@@ -16,6 +18,8 @@ class Fan(db.Model):
 class Venue(db.Model):
     __tablename__ = 'venues'
 
+    serialize_rules = ('-events',)
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
     location = db.Column(db.String, nullable=False)
@@ -25,6 +29,8 @@ class Venue(db.Model):
 
 class Event(db.Model):
     __tablename__ = 'events'
+
+    serialize_rules = ('-tickets',)
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
