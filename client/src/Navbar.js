@@ -18,12 +18,12 @@ function Navbar({user, onLogout}) {
                 <NavLink className="NavLink" to = "/events">Events</NavLink>
                 </div>
                 {user ? (
-                    <div>
-                        <p >Welcome, {user.username}!</p>
-                        <button onClick={handleLogout}>Logout</button>
+                    <div class="flex justify-between gap-x-6">
+                        <p className="logout">Welcome, {user.username}!</p>
+                        <button className="logoutbtn" onClick={handleLogout}>Logout</button>
                     </div>
                 ) : (
-                    <Link className="NavLink" to="/login">Login</Link>
+                    <Link className="NavLogin" to="/login">Login</Link>
                 )}
             </nav>
         </header>
