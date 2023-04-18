@@ -19,7 +19,7 @@ if __name__ == '__main__':
         Fan.query.delete()
         Venue.query.delete()
         Ticket.query.delete()
-
+        Event.query.delete()
         f1 = Fan(username='losttherexo', first_name='Andre', last_name='Vargas Roo', dob='03/25/1996')
         f2 = Fan(username='123toast', first_name='Marcus', last_name='Hidalgo', dob='06/08/1996')
         fans = [f1, f2]
