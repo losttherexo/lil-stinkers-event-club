@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { useNavigate, Link } from 'react-router-dom';
 
-function Profile({user, setUser}){
+function Profile({user, setUser , handleLogout}){
     const navigate = useNavigate()
     useEffect(() => {
         if (!user) {
@@ -45,6 +45,7 @@ function Profile({user, setUser}){
         fetch(`http://localhost:5555/fans/${user.id}`,{
         method: 'DELETE'
         })
+        handleLogout()
         navigate('/events')
     }
 
