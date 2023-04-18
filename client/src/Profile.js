@@ -1,6 +1,17 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
+import { Navigate } from 'react-router-dom';
 
 function Profile({user, setUser}){
+    
+    useEffect(() => {
+        if (!user) {
+            fetch("/check_session").then((response) => {
+                if (response.ok) {
+                    response.json().then((user) => setUser(user));
+                }
+                else Navigate('/signup')
+            });
+    } }, []);
 
     const [username, setUsername] = useState("");
 //  const [password, setPassword] = useState("");
@@ -33,7 +44,7 @@ function Profile({user, setUser}){
 
     return(
         <div class="mx-auto max-w-2xl text-center justify-between gap-x-6 p-6 lg:px-8">
-            <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">Welcome {user.username}</h2>
+            <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">Welcome {user && user.username}</h2>
 
             <div>
                 <form onSubmit={handleEdit} class="mx-auto mt-16 max-w-sm sm:mt-20">
@@ -72,7 +83,7 @@ function Profile({user, setUser}){
                         type="text"
                         name="first-name"
                         id="first-name"
-                        placeholder={user.first_name}
+                        placeholder={user ? user.first_name : 'meow'}
                         value={firstName}
                         onChange={(e) => setFirstName(e.target.value)}
                         class="block w-full rounded-md border-0 px-3.5 py-2 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-inset focus:ring-amber-400 sm:text-sm sm:leading-6"
@@ -82,7 +93,7 @@ function Profile({user, setUser}){
                         type="text"
                         name="last-name"
                         id="last-name"
-                        placeholder={user.last_name}
+                        placeholder={user ? user.last_name : 'potato'}
                         value={lastName}
                         onChange={(e) => setLastName(e.target.value)}
                         class="block w-full rounded-md border-0 px-3.5 py-2 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-inset focus:ring-amber-400 sm:text-sm sm:leading-6"
