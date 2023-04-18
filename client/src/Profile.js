@@ -1,15 +1,15 @@
 import React, {useState, useEffect} from 'react'
-import { Navigate, Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
-function Profile({user, setUser}){
-    
+function Profile({user, setUser , handleLogout}){
+    const navigate = useNavigate()
     useEffect(() => {
         if (!user) {
             fetch("/check_session").then((response) => {
                 if (response.ok) {
                     response.json().then((user) => setUser(user));
                 }
-                else Navigate('/signup')
+                else navigate('/signup')
             });
     } }, []);
 
@@ -45,6 +45,8 @@ function Profile({user, setUser}){
         fetch(`http://localhost:5555/fans/${user.id}`,{
         method: 'DELETE'
         })
+        handleLogout()
+        navigate('/events')
     }
 
     return(

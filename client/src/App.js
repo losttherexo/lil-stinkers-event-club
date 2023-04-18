@@ -66,7 +66,7 @@ function App() {
                     <Route path="/events" element={<Events eventsArray={eventsArray}/>} />
                     <Route path="/login" element={<Login onLogin={handleLogin}/>} />
                     <Route path="/signup" element={<SignUp />} />
-                    <Route path="/profile" element={<Profile user={user}/>} />
+                    <Route path="/profile" element={<Profile user={user} handleLogout={handleLogout}/>} />
                     <Route path="*" element={<h1>404 Page Not Found</h1>} />
                 </Routes>
         </header>
