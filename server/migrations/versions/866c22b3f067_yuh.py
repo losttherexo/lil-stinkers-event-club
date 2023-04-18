@@ -1,8 +1,8 @@
-"""nuked tables
+"""yuh
 
-Revision ID: f6577d10eb6d
+Revision ID: 866c22b3f067
 Revises: 
-Create Date: 2023-04-18 15:01:55.127309
+Create Date: 2023-04-18 17:21:55.876832
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'f6577d10eb6d'
+revision = '866c22b3f067'
 down_revision = None
 branch_labels = None
 depends_on = None
