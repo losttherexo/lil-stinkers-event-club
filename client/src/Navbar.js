@@ -17,9 +17,9 @@ function Navbar({user, onLogout}) {
                 <NavLink className="NavLink" to = "/venues">Venues</NavLink>
                 <NavLink className="NavLink" to = "/events">Events</NavLink>
                 </div>
-                <div class="flex flex-1 items-center justify-end gap-x-6">
+                {/* <div class="flex flex-1 items-center justify-end gap-x-6">
                     <Link className="signup" to="/signup">Sign Up</Link>
-                </div>
+                </div> */}
                 {user ? (
                     <div class="flex justify-between gap-x-6">
                         <p className="logout">Welcome, {user.username}!</p>
