@@ -10,6 +10,7 @@ import {
     Routes,
     Route,
   } from "react-router-dom";
+import Profile from "./Profile"
 
 function App() {
 
@@ -57,6 +58,7 @@ function App() {
                     <Route path="/events" element={<Events eventsArray={eventsArray}/>} />
                     <Route path="/login" element={<Login onLogin={handleLogin}/>} />
                     <Route path="/signup" element={<SignUp />} />
+                    <Route path="/profile" element={<Profile user={user}/>} />
                     <Route path="*" element={<h1>404 Page Not Found</h1>} />
                 </Routes>
         </header>
