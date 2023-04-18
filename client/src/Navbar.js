@@ -23,7 +23,11 @@ function Navbar({user, onLogout}) {
                 <NavLink className="NavLink" to = "./" end>Home</NavLink>
                 <NavLink className="NavLink" to = "/venues">Venues</NavLink>
                 <NavLink className="NavLink" to = "/events">Events</NavLink>
-                <NavLink className="NavLink" to = "/profile">Profile</NavLink>
+                {user ? (
+                    <Link className="NavLink" to="/profile">Profile</Link>
+                ) : (
+                    <Link className="NavLink" to="/login">Profile</Link>
+                )}
                 </div>
                 {/* <div class="flex flex-1 items-center justify-end gap-x-6">
                     <Link className="signup" to="/signup">Sign Up</Link>
