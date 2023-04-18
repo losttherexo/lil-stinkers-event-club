@@ -11,6 +11,8 @@ function Events({eventsArray}){
     //     else search.sort((a, b) => b.date.localeCompare(a.date))
     //   }
 
+    
+
     return(
         <div class='flex flex-col justify-center text-center'>
             <h1 class='p-6 m-3 text-4xl font-bold'>Upcoming Events</h1>

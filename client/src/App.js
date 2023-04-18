@@ -49,7 +49,10 @@ function App() {
     useEffect(() => {
         fetch('http://localhost:5555/events')
             .then(r => r.json())
-            .then(setEventsArray)
+            .then(data => {
+                const sortedEvents = data.sort((a, b) => new Date(a.date) - new Date(b.date));
+                setEventsArray(sortedEvents);
+              })
     },[])
 
   return (
