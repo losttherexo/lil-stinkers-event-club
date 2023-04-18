@@ -14,7 +14,7 @@ function Profile({user, setUser , handleLogout, handleUpdate}){
     } }, []);
 
 
-    const [username, setUsername] = useState("");
+    // const [username, setUsername] = useState("");
 //  const [password, setPassword] = useState("");
 //  const [passwordConfirmation, setPasswordConfirmation] = useState("");
     const [firstName, setFirstName] = useState("");

@@ -9,7 +9,7 @@ class Fan(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
 
-    username = db.Column(db.String, nullable=False)
+    email = db.Column(db.String, nullable=False)
     _password_hash = db.Column(db.String, nullable=False)
     password_confirmation = db.Column(db.String, nullable=False)
     first_name = db.Column(db.String, nullable=False)
