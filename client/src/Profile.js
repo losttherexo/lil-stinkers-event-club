@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { useNavigate, Link } from 'react-router-dom';
 
-function Profile({user, setUser , handleLogout}){
+function Profile({user, setUser , handleLogout, handleUpdate}){
     const navigate = useNavigate()
     useEffect(() => {
         if (!user) {
@@ -12,6 +12,7 @@ function Profile({user, setUser , handleLogout}){
                 else navigate('/signup')
             });
     } }, []);
+
 
     const [username, setUsername] = useState("");
 //  const [password, setPassword] = useState("");
@@ -38,7 +39,8 @@ function Profile({user, setUser , handleLogout}){
             if (r.ok) {
               r.json().then((user) => setUser(user));
             }
-        });
+        })
+        handleUpdate();
     }
 
     const handleDelete = (e) => {
