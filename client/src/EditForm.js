@@ -1,7 +1,7 @@
 import { useState } from "react";
 import EditFormButton from "./EditFormButton";
 
-function EditForm(user, setUser, handleUpdate){
+function EditForm({user, setUser, handleUpdate}){
 
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -13,7 +13,7 @@ function EditForm(user, setUser, handleUpdate){
 
     const handleEdit = (e) => {
         e.preventDefault()
-        fetch(`http://localhost:5555/fans/${user?.user?.id}` , {
+        fetch(`http://localhost:5555/fans/${user.id}` , {
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
@@ -27,12 +27,15 @@ function EditForm(user, setUser, handleUpdate){
             }),
         }).then((r) => {
             if (r.ok) {
-              r.json().then((user) => handleUpdate(user));
+              r.json().then((user) => {
+                console.log(user)
+                setUser(user)
+            });
             }
         })
         setFirstName('')
         setLastName('')
-        // handleUpdate();
+        handleUpdate();
     }
 
     return(
