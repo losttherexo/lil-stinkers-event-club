@@ -4,6 +4,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:wght@300&family=Quicksand:wght@300&display=swap');
 
+body {
+    background-color: #edf2f6; /* replace with your desired background color */
+  }
+
 .NavLink {
     color: white;
     font-size: 20px;
