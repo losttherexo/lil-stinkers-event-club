@@ -1,9 +1,16 @@
-import React from 'react'
+import {React, useState} from 'react'
+import {SlMenu} from 'react-icons/sl'
 import {NavLink, Link} from 'react-router-dom'
 import './index.css';
 
 
 function Navbar({user, onLogout}) {
+    const [nav, setNav] = useState(false)
+
+    const handleNav = () => {
+        setNav(!nav)
+    }
+
     function handleLogout() {
         fetch("/logout", {
             method: "DELETE",
@@ -25,7 +32,26 @@ function Navbar({user, onLogout}) {
                 ) : (
                     <Link className="NavLogin" to="/login">Login</Link>
                 )}
+                <button onClick={handleNav} className='text-white block md:hidden'>
+                    <SlMenu size={20}/>
+                </button>
             </nav>
+            <div className={nav ? 'text-white fixed left-0 top-0 w-[40%] h-full border-r border-stone-400 bg-slate-900 ease-in-out duration-500' : 'fixed left-[-100%]'}>
+                <h1 className='w-full medium:text-xl text-2xl font-bold p-4'>
+                    <NavLink exact to='/'>Lil Stinker's Club</NavLink>
+                </h1>
+                <ul >
+                    <li className='p-4 border-b border-stone-400'>
+                        <NavLink to='./'>Home</NavLink>
+                    </li>
+                    <li className='p-4 border-b border-stone-400'>
+                        <NavLink to='/venues'>Venues</NavLink>
+                    </li>
+                    <li className='p-4 border-b border-stone-400'>
+                        <NavLink to='/events'>Events</NavLink>
+                    </li>
+                </ul>
+            </div>
         </header>
 
     )
