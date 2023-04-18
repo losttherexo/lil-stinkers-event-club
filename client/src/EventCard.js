@@ -7,6 +7,7 @@ function EventCard({name, date, description, events, image, age_restriction, tic
             <img src={image} alt={name} class='flex w-1/3 mx-auto mb-1'/>
             <p>{date}</p>
             <p>{description}</p>
+            <button class='border rounded-lg shadow-sm px-2 my-2'>Buy Tix</button>
         </div>
     )
 }

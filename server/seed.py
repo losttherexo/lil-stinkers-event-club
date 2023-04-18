@@ -20,8 +20,8 @@ if __name__ == '__main__':
         Venue.query.delete()
         Ticket.query.delete()
 
-        f1 = Fan(username='losttherexo', first_name='Andre', last_name='Vargas Roo', dob=date(1996, 3, 25))
-        f2 = Fan(username='123toast', first_name='Marcus', last_name='Hidalgo', dob=date(1996, 6, 8))
+        f1 = Fan(username='losttherexo', first_name='Andre', last_name='Vargas Roo', dob='03/25/1996')
+        f2 = Fan(username='123toast', first_name='Marcus', last_name='Hidalgo', dob='06/08/1996')
         fans = [f1, f2]
 
         v1 = Venue(name='Stardust', location='Orlando, FL', capacity=200, image='https://bungalower.com/wp-content/uploads/2017/06/BEK_3494-1024x683.jpg')
@@ -29,9 +29,9 @@ if __name__ == '__main__':
         v3 = Venue(name='Elsewhere (The Hall)', location='Brooklyn, NY', capacity=675, image='https://www.datocms-assets.com/46309/1631108277-the-hallcarousel3.jpg')
         venues=[v1, v2, v3]
 
-        e1 = Event(name='A Very Toasty Tour', price=10, date=date(2023, 6, 9), description='Best night of ur freaking life', image='https://pbs.twimg.com/media/FqTmBYIWYAEG_cf?format=jpg&name=large', venue=v1)
-        e2 = Event(name='Happy Hour', date=date(2023, 4, 21), description="There's always an afterparty...", image='https://assets.entrepreneur.com/content/3x2/2000/20160129160823-happy-hour-coworkers-boss-pub-bar.jpeg', venue=v2, age_restriction=True)
-        e3 = Event(name='TimeCop1983', price=25, date=date(2023, 9, 15), description='Synthwave to travel space and time', image='https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Timecop1983_%28photo_by_Lionne_van_der_Hagen%29.jpg/1200px-Timecop1983_%28photo_by_Lionne_van_der_Hagen%29.jpg',  venue=v3)
+        e1 = Event(name='A Very Toasty Tour', price=10, date='06/09/2023', description='Best night of ur freaking life', image='https://pbs.twimg.com/media/FqTmBYIWYAEG_cf?format=jpg&name=large', venue=v1)
+        e2 = Event(name='Happy Hour', date='04/21/2023', description="There's always an afterparty...", image='https://assets.entrepreneur.com/content/3x2/2000/20160129160823-happy-hour-coworkers-boss-pub-bar.jpeg', venue=v2, age_restriction=True)
+        e3 = Event(name='TimeCop1983', price=25, date='09/15/2023', description='Synthwave to travel space and time', image='https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Timecop1983_%28photo_by_Lionne_van_der_Hagen%29.jpg/1200px-Timecop1983_%28photo_by_Lionne_van_der_Hagen%29.jpg',  venue=v3)
         events = [e1, e2]
 
         t1 = Ticket(fan=f1, event=e1)

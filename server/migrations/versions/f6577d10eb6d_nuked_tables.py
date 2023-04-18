@@ -1,8 +1,8 @@
-"""recreated table
+"""nuked tables
 
-Revision ID: a81596e067e5
+Revision ID: f6577d10eb6d
 Revises: 
-Create Date: 2023-04-17 10:00:52.066293
+Create Date: 2023-04-18 15:01:55.127309
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'a81596e067e5'
+revision = 'f6577d10eb6d'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -21,8 +21,6 @@ def upgrade():
     op.create_table('fans',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('username', sa.String(), nullable=False),
-    sa.Column('_password_hash', sa.String(), nullable=False),
-    sa.Column('password_confirmation', sa.String(), nullable=False),
     sa.Column('first_name', sa.String(), nullable=False),
     sa.Column('last_name', sa.String(), nullable=False),
     sa.Column('dob', sa.String(), nullable=False),
@@ -39,7 +37,7 @@ def upgrade():
     op.create_table('events',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(), nullable=False),
-    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('date', sa.String(), nullable=False),
     sa.Column('description', sa.String(), nullable=False),
     sa.Column('image', sa.String(), nullable=True),
     sa.Column('age_restriction', sa.Boolean(), nullable=False),

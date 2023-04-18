@@ -57,7 +57,7 @@ class Event(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
-    date = db.Column(db.Date, nullable=False)
+    date = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=False)
     image = db.Column(db.String)
     age_restriction = db.Column(db.Boolean, nullable=False, default=False)
