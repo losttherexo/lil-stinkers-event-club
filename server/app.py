@@ -3,12 +3,12 @@
 # Standard library imports
 
 # Remote library imports
-from flask import Flask, make_response, jsonify, request, session
+from flask import Flask, make_response, jsonify, request, session, flash
 from flask_restful import Resource, Api
 from flask_migrate import Migrate
 
 # Local imports
-from config import app, db, api
+from config import app, db, api, bcrypt
 from models import Fan, Ticket, Venue, Event
 
 # Views go here!
@@ -16,43 +16,83 @@ class HomePage(Resource):
     def get(self):
         return {'message': '200: Welcome to our Home Page'}, 200
 
+# class SignUp(Resource):
+#     def post(self):
+#         data=request.get_json()
+#         new_fan = Fan(
+#             username=data['username'],
+#             # password = data['password'],
+#             # password_confirmation = data['password_confirmation'],
+#             first_name=data['first_name'],
+#             last_name=data['last_name'],
+#             dob=data['dob'],
+#         )
+#         db.session.add(new_fan)
+#         db.session.commit()
+#         return {'message': '201, a new fan has been added!'}, 201
 class SignUp(Resource):
     def post(self):
-        data=request.get_json()
+        username = request.json['username']
+        password = request.json['password']
+        password_confirmation = request.json['passwordConfirmation']
+        firstname = request.json['first_name']
+        lastname = request.json['last_name']
+        dob = request.json['dob']
+
+        user_exists = Fan.query.filter(Fan.username == username).first() is not None
+
+        if user_exists:
+            return jsonify({"error": "User already exists"}), 409
+
+        hashed_password = bcrypt.generate_password_hash(password)
+        hashed_password_confirmation = bcrypt.generate_password_hash(password_confirmation)
         new_fan = Fan(
-            username=data['username'],
-            # password = data['password'],
-            # password_confirmation = data['password_confirmation'],
-            first_name=data['first_name'],
-            last_name=data['last_name'],
-            dob=data['dob'],
+            username=username,
+            _password_hash=hashed_password,
+            password_confirmation = hashed_password_confirmation,
+            first_name=firstname,
+            last_name=lastname,
+            dob=dob
         )
         db.session.add(new_fan)
         db.session.commit()
-        return {'message': '201, a new fan has been added!'}, 201
+        return jsonify({
+            "id": new_fan.id,
+            "username": new_fan.username
+        })
 
 class Login(Resource):
 
     def post(self):
 
         username = request.get_json().get('username')
+        password = request.get_json().get('password')
         user = Fan.query.filter(Fan.username == username).first()
 
         # password = request.get_json()['password']
 
         # if user.authenticate(password):
-        if user:
-            session.permanent = True
-            session['fan_id'] = user.id
-            return user.to_dict(), 200
+        if user is None:
+            return {'error': 'Invalid username or password'}, 401
+        if not bcrypt.check_password_hash(user._password_hash, password):
+            return {'error': 'Invalid username or password'}, 401
 
-        return {'error': 'Invalid username or password'}, 401
+        flash("Login Successful!")
+        session.permanent = True
+        session['fan_id'] = user.id
+        return jsonify({
+            "id": user.id,
+            "username": user.username
+        })
+
 
 class Logout(Resource):
 
     def delete(self):
-
-        session['fan_id'] = None
+        # username = request.get_json().get('username')
+        # user = Fan.query.filter(Fan.username == username).first()
+        # flash(f"You have been logged out! See you again, {username}")
+        session.pop("user", None)
 
         return {}, 204
 
