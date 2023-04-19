@@ -26,29 +26,6 @@ function Home({user, eventsArray}) {
             })
     },[])
 
-<<<<<<< Updated upstream
-
-
-
-
-
-    const eventComponents = eventsArray.map(event =>
-        <EventMapCard
-            key={event.id}
-            name={event.name}
-            image={event.image}
-            description={event.description}
-            ageRestriction={event.age_restriction}
-            price={event.price}
-            venue={event.venue.name}
-            location={event.venue.location}
-            latitude={event.venue.latitude}
-            longtitude={event.venue.longtitude}
-            setLng={setLng}
-            setLat={setLat}
-            user={user}
-            event={event}
-=======
   const eventComponents = eventsArray.map(event =>
     <EventMapCard
         key={event.id}
@@ -65,7 +42,6 @@ function Home({user, eventsArray}) {
         setLat={setLat}
         user={user}
         event={event}
->>>>>>> Stashed changes
         />
     )
 
@@ -114,10 +90,6 @@ function Home({user, eventsArray}) {
                     <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-3xl text-center p-6">Upcoming Events</h2>
                     {eventComponents}
                 </div>
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
             </div>
         </div>
     </div>
