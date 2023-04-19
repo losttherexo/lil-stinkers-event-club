@@ -7,11 +7,11 @@ function Profile({user, setUser , handleLogout, handleUpdate, tix}){
     const navigate = useNavigate()
     const [hideEditForm, setHideEditForm] = useState(true)
     const [isOpen, setIsOpen] = useState(false);
-
+    console.log(tix)
     const tixComponents = tix
-        .filter(tix => tix.fan_id === user.id)
-        .map(tix => <TicketCard key={tix.id} event={tix.event.name} date={tix.event.date} location={tix.event.venue.name} image={tix.event.image}/>)
-    
+        .filter(ticket => ticket.fan_id === user?.id)
+        .map(ticket => <TicketCard key={ticket.id} event={ticket.event.name} date={ticket.event.date} location={ticket.event.venue.name} image={ticket.event.image}/>)
+
     const toggleModal = () => {
       setIsOpen(!isOpen);
       console.log('yes')
@@ -56,8 +56,8 @@ function Profile({user, setUser , handleLogout, handleUpdate, tix}){
         <div>
         <div class="flex flex-col mx-auto max-w-2xl items-center text-center justify-between gap-x-6 p-6  py-10 lg:px-8">
             <h1 class="text-5xl font-bold tracking-tight text-slate-900 text-left py-6">Hi {user && user.first_name}!</h1>
-            
-            
+
+
 
             <div class="grid grid-cols-3 gap-8 w-screen max-w-3xl py-10 content-center">
                 <div class="col-span-2 text-left px-12 justify-left py-10 border rounded shadow-md">
