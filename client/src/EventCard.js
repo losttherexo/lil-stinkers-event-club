@@ -1,5 +1,6 @@
 import React from "react"
 import BuyTicket from "./BuyTicket"
+import TicketModal from "./TicketModal"
 
 function EventCard({name, date, description, location, image, age_restriction, price, event, user}){
     return(

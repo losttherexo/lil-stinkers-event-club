@@ -1,8 +1,8 @@
-"""nuked?
+"""fix it
 
-Revision ID: b9c4dd9945a0
+Revision ID: 31217cdafc08
 Revises: 
-Create Date: 2023-04-19 11:41:33.126492
+Create Date: 2023-04-19 06:27:09.580919
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'b9c4dd9945a0'
+revision = '31217cdafc08'
 down_revision = None
 branch_labels = None
 depends_on = None
