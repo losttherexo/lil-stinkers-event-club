@@ -1,9 +1,10 @@
 import { useState } from "react";
 import {Link, useNavigate} from 'react-router-dom'
 import './index.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function Login({ onLogin }) {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [show, setShow] = useState(false)
 
@@ -20,7 +21,7 @@ function Login({ onLogin }) {
         "Content-Type": "application/json",
       },
       // body: JSON.stringify({ username}),
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ email, password }),
     }).then((r) => {
       if (r.ok) {
         r.json().then((user) => onLogin(user))
@@ -38,34 +39,42 @@ function Login({ onLogin }) {
                 <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">Login</h2>
             </div>
             <div>
-                <label for="username" class="block text-sm font-semibold leading-6 text-gray-900">Username</label>
+                <label for="email" class="block text-sm font-semibold leading-6 text-gray-900">Email</label>
                 <input
                     type="text"
-                    name="username"
-                    id="username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
+                    name="email"
+                    id="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     class="block w-full rounded-md border-0 px-3.5 py-2 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-inset focus:ring-amber-400 sm:text-sm sm:leading-6"
                 />
             </div>
+            <div class="relative w-full">
                 <label htmlFor="password">Password: </label>
+                <div class="absolute inset-y-11 right-0 flex items-center px-2">
+                    <input class="hidden js-password-toggle" id="toggle" type="checkbox" />
+                    <span class="z-auto ">
+                        {show ? <FontAwesomeIcon icon="fa-solid fa-eye" onClick={handleShow}/> :  <FontAwesomeIcon icon="fa-solid fa-eye-slash" onClick={handleShow}/>
+                        }
+                    </span>
+                </div>
                 <div>
-                  <input
-                    type={show ? "text" : "password"}
-                    id="password"
-                    autoComplete="current-password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    class="block w-full rounded-md border-0 px-3.5 py-2 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-inset focus:ring-amber-400 sm:text-sm sm:leading-6"
-                  />
-                  <label onClick={handleShow}>{show? "Hide" : "Show"}</label>
+                    <input
+                        type={show ? "text" : "password"}
+                        id="password"
+                        autoComplete="current-password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        class="block w-full rounded-md border-0 px-3.5 py-2 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-inset focus:ring-amber-400 sm:text-sm sm:leading-6 js-password"
+                    />
+                </div>
                 </div>
             <div class="mt-10">
               <button type="submit" class="block w-full rounded-md bg-slate-900 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-300">Login</button>
                 {/* <Link to="/events"><button type="submit" class="block w-full rounded-md bg-slate-900 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-300">Login</button></Link> */}
             </div>
             <div class="mx-auto flex items-center   gap-x-2">
-                <p>Don't have a username?</p>
+                <p>Don't have an account?</p>
                 <Link className="signupbtn" to="/signup">Sign Up!</Link>
             </div>
 

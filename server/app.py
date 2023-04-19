@@ -32,14 +32,14 @@ class HomePage(Resource):
 #         return {'message': '201, a new fan has been added!'}, 201
 class SignUp(Resource):
     def post(self):
-        username = request.json['username']
+        email = request.json['email']
         password = request.json['password']
-        password_confirmation = request.json['passwordConfirmation']
+        password_confirmation = request.json['password_confirmation']
         firstname = request.json['first_name']
         lastname = request.json['last_name']
         dob = request.json['dob']
 
-        user_exists = Fan.query.filter(Fan.username == username).first() is not None
+        user_exists = Fan.query.filter(Fan.email == email).first() is not None
 
         if user_exists:
             return jsonify({"error": "User already exists"}), 409
@@ -47,7 +47,7 @@ class SignUp(Resource):
         hashed_password = bcrypt.generate_password_hash(password)
         hashed_password_confirmation = bcrypt.generate_password_hash(password_confirmation)
         new_fan = Fan(
-            username=username,
+            email=email,
             _password_hash=hashed_password,
             password_confirmation = hashed_password_confirmation,
             first_name=firstname,
@@ -58,31 +58,31 @@ class SignUp(Resource):
         db.session.commit()
         return jsonify({
             "id": new_fan.id,
-            "username": new_fan.username
+            "email": new_fan.email
         })
 
 class Login(Resource):
 
     def post(self):
 
-        username = request.get_json().get('username')
+        email = request.get_json().get('email')
         password = request.get_json().get('password')
-        user = Fan.query.filter(Fan.username == username).first()
+        user = Fan.query.filter(Fan.email == email).first()
 
         # password = request.get_json()['password']
 
         # if user.authenticate(password):
         if user is None:
-            return {'error': 'Invalid username or password'}, 401
+            return {'error': 'Invalid email or password'}, 401
         if not bcrypt.check_password_hash(user._password_hash, password):
-            return {'error': 'Invalid username or password'}, 401
+            return {'error': 'Invalid email or password'}, 401
 
         flash("Login Successful!")
         session.permanent = True
         session['fan_id'] = user.id
         return jsonify({
             "id": user.id,
-            "username": user.username
+            "email": user.email
         })
 
 
@@ -124,7 +124,7 @@ class Fans(Resource):
     def post(self):
         data = request.get_json()
         new_fan = Fan(
-            username=data['username'],
+            email=data['email'],
             first_name=data['first_name'],
             last_name=data['last_name'],
             dob=data['dob'],

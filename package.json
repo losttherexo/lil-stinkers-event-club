@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "fortawesome": "^0.0.1-security",
     "react-router-dom": "^6.10.0"
   }
 }

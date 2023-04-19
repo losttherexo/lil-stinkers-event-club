@@ -34,7 +34,7 @@ function Navbar({user, onLogout}) {
                 </div> */}
                 {user ? (
                     <div class="flex justify-between gap-x-6">
-                        <p className="logout">Welcome, {user.username}!</p>
+                        <p className="logout">Welcome, {user.first_name}!</p>
                         <Link className="logoutbtn" to="/login" onClick={handleLogout}>Logout</Link>
                     </div>
                 ) : (
