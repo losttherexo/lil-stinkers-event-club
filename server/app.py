@@ -314,6 +314,8 @@ class Events(Resource):
         new_event = Event(
             name=data['name'],
             date=data['date'],
+            image=data['image'],
+            price=data['price'],
             description=data['description'],
             age_restriction=data['age_restriction'],
             venue_id=data['venue_id']

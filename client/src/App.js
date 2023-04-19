@@ -62,6 +62,10 @@ function App() {
               })
     },[])
 
+    const addEvent = (newEventObj) => {
+        setEventsArray([...eventsArray, newEventObj])
+    }
+
   return (
     <div className="App">
         <header className="App-header">
@@ -70,7 +74,7 @@ function App() {
                     <Route path="/" element={<Home user={user}/>} />
                     <Route path="/venues" element={<Venues venuesArray={venuesArray}/>} />
                     {/* <Route path="/events" element={<Events eventsArray={eventsArray} search={search}/>} /> */}
-                    <Route path="/events" element={<Events eventsArray={eventsArray} user={user}/>} />
+                    <Route path="/events" element={<Events addEvent={addEvent} eventsArray={eventsArray} user={user}/>} />
                     <Route path="/login" element={<Login handleLogin={setUser}/>} />
                     <Route path="/signup" element={<SignUp />} />
                     <Route path="/profile" element={<Profile user={user} handleLogout={handleLogout} handleUpdate={handleUpdate} setUser={setUser}/>} />

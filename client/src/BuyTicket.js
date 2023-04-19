@@ -22,6 +22,7 @@ const BuyTicket = (event) => {
             }),
         })
         .then((r) => r.json())
+        // console.log(event.event)
     }
 
     return (
