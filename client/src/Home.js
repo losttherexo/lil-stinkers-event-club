@@ -77,10 +77,12 @@ function Home({user, eventsArray}) {
                     <GeolocateControl />
                     {coordinates.map((data) => (
                         <Popup longitude={data.longtitude} latitude={data.latitude}
+                            maxWidth="200px"
                             anchor="bottom"
                             onClose={() => setShowPopup(false)}
                             onClick={() => setShowPopup(true)}>
-                            Welcome to {data.name}
+                            <strong>{data.name}</strong>, in <strong>{data.location}</strong>
+                            <img src={data.image} alt={data.name} />
                         </Popup>
                     ))}
                 </Map>
