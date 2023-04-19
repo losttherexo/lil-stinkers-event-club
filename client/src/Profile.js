@@ -40,6 +40,8 @@ function Profile({user, setUser , handleLogout, handleUpdate}){
               r.json().then((user) => setUser(user));
             }
         })
+        setFirstName('')
+        setLastName('')
         handleUpdate();
     }
 

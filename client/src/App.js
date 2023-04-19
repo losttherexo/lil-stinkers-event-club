@@ -26,7 +26,7 @@ function App() {
                 response.json().then((user) => setUser(user));
             }
         });
-    }, [handleLogin]);
+    }, []);
 
     function handleLogin(user) {
         setUser(user);
