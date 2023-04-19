@@ -139,7 +139,7 @@ class FanByID(Resource):
         if id not in [f.id for f in Fan.query.all()]:
             return {'error': '404, Fan not Found!'}, 404
 
-        return make_response((f for f in Fan.query.filter(Fan.id==id).first()).to_dict(), 200)
+        return make_response((Fan.query.filter(Fan.id==id).first()).to_dict(), 200)
 
     def patch(self, id):
         if id not in [f.id for f in Fan.query.all()]:
@@ -185,7 +185,7 @@ class TicketByID(Resource):
         if id not in [t.id for t in Ticket.query.all()]:
             return {'error': '404, Ticket not Found!'}, 404
 
-        return make_response((t for t in Ticket.query.filter(Ticket.id==id).first()).to_dict(), 200)
+        return make_response((Ticket.query.filter(Ticket.id==id).first()).to_dict(), 200)
 
     def patch(self, id):
         if id not in [t.id for t in Ticket.query.all()]:
@@ -234,7 +234,7 @@ class VenueByID(Resource):
         if id not in [v.id for v in Venue.query.all()]:
             return {'error': '404, Venue not Found!'}, 404
 
-        return make_response((v for v in Venue.query.filter(Venue.id==id).first()).to_dict(), 200)
+        return make_response((Venue.query.filter(Venue.id==id).first()).to_dict(), 200)
 
     def patch(self, id):
         if id not in [v.id for v in Venue.query.all()]:
@@ -332,7 +332,7 @@ class EventByID(Resource):
         if id not in [event.id for event in Event.query.all()]:
             return {'error': '404, Event not Found!'}, 404
 
-        return make_response((event for event in Event.query.filter(Event.id==id).first()).to_dict(), 200)
+        return make_response((Event.query.filter(Event.id==id).first()).to_dict(), 200)
 
     def patch(self, id):
         if id not in [event.id for event in Event.query.all()]:

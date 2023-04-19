@@ -7,12 +7,25 @@ import Map, {
   FullscreenControl,
   GeolocateControl,
 } from "react-map-gl";
-import { useState, useSelector } from "react";
+import { useState, useEffect } from "react";
 import EventMapCard from "./EventMapCard";
 
 function Home({user, eventsArray}) {
   const [lng, setLng] = useState(-94.5786);
   const [lat, setLat] = useState(39.0997);
+  const [coordinates, setCoordinates] = useState([])
+
+  useEffect(() => {
+    fetch('http://localhost:5555/venues')
+        .then(r => r.json())
+        .then(data => {
+            console.log(data)
+            setCoordinates(data);
+          })
+},[])
+
+
+
 
 
 
@@ -50,16 +63,20 @@ function Home({user, eventsArray}) {
                     initialViewState={{
                     longitude: lng,
                     latitude: lat,
-                    zoom: 3,
+                    zoom: 3.5,
                     }}
                     mapStyle="mapbox://styles/mapbox/streets-v12"
                 >
-                    <Marker longitude={lng} latitude={lat} />
+                    {/*
                     <Marker longitude={-81.3789} latitude={28.5384} />
                     <Marker longitude={-104.9903} latitude={39.7392} />
                     <Marker longitude={-73.9442} latitude={40.6782} />
 
-
+                */}
+                    <Marker longitude={lng} latitude={lat} />
+                    {coordinates.map((data) => (
+                        <Marker longitude={data.longtitude} latitude ={data.latitude} key={data.id}/>
+                    ))}
                     <NavigationControl position="bottom-right" />
                     <FullscreenControl />
                     <GeolocateControl />
