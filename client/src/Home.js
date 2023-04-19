@@ -15,6 +15,7 @@ function Home({user, eventsArray}) {
   const [lng, setLng] = useState(-94.5786);
   const [lat, setLat] = useState(39.0997);
   const [coordinates, setCoordinates] = useState([])
+  const [showPopup, setShowPopup] = useState(true)
 
     useEffect(() => {
         fetch('http://localhost:5555/venues')
@@ -25,6 +26,7 @@ function Home({user, eventsArray}) {
             })
     },[])
 
+<<<<<<< Updated upstream
 
 
 
@@ -46,10 +48,26 @@ function Home({user, eventsArray}) {
             setLat={setLat}
             user={user}
             event={event}
+=======
+  const eventComponents = eventsArray.map(event =>
+    <EventMapCard
+        key={event.id}
+        name={event.name}
+        image={event.image}
+        description={event.description}
+        ageRestriction={event.age_restriction}
+        price={event.price}
+        venue={event.venue.name}
+        location={event.venue.location}
+        latitude={event.venue.latitude}
+        longtitude={event.venue.longtitude}
+        setLng={setLng}
+        setLat={setLat}
+        user={user}
+        event={event}
+>>>>>>> Stashed changes
         />
     )
-
-  
 
   return (
     <div >
@@ -74,12 +92,6 @@ function Home({user, eventsArray}) {
                     }}
                     mapStyle="mapbox://styles/mapbox/streets-v12"
                 >
-                    {/*
-                    <Marker longitude={-81.3789} latitude={28.5384} />
-                    <Marker longitude={-104.9903} latitude={39.7392} />
-                    <Marker longitude={-73.9442} latitude={40.6782} />
-
-                */}
                     <Marker longitude={lng} latitude={lat} />
                     {coordinates.map((data) => (
                         <Marker longitude={data.longtitude} latitude ={data.latitude} key={data.id}/>
@@ -87,6 +99,14 @@ function Home({user, eventsArray}) {
                     <NavigationControl position="bottom-right" />
                     <FullscreenControl />
                     <GeolocateControl />
+                    {coordinates.map((data) => (
+                        <Popup longitude={data.longtitude} latitude={data.latitude}
+                            anchor="bottom"
+                            onClose={() => setShowPopup(false)}
+                            onClick={() => setShowPopup(true)}>
+                            Welcome to {data.name}
+                        </Popup>
+                    ))}
                 </Map>
             </div>
             <div class='py-10 gap-6 flex flex-col col-span-2 justify-center text-center items-center'>
@@ -94,6 +114,10 @@ function Home({user, eventsArray}) {
                     <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-3xl text-center p-6">Upcoming Events</h2>
                     {eventComponents}
                 </div>
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
             </div>
         </div>
     </div>
