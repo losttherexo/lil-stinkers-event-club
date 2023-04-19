@@ -47,7 +47,7 @@ function Navbar({user, setUser, onLogout}) {
                     <SlMenu size={20}/>
                 </button>
             </nav>
-            <div className={nav ? 'text-white fixed left-0 top-0 w-[40%] h-full border-r border-stone-400 bg-slate-900 ease-in-out duration-500' : 'fixed left-[-100%]'}>
+            <div className={nav ? 'z-10 text-white fixed left-0 top-0 w-[40%] h-full border-r border-stone-400 bg-slate-900 ease-in-out duration-500' : 'fixed left-[-100%]'}>
                 <h1 className='w-full medium:text-xl text-2xl font-bold p-4'>
                     <NavLink exact to='/'>Lil Stinker's Club</NavLink>
                 </h1>

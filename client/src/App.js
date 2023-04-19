@@ -50,9 +50,6 @@ function App() {
 
     const [eventsArray, setEventsArray] = useState([])
 
-    // const search = eventsArray.filter((event) =>
-    // event.date.includes(query))
-
     useEffect(() => {
         fetch('http://localhost:5555/events')
             .then(r => r.json())
@@ -60,6 +57,14 @@ function App() {
                 const sortedEvents = data.sort((a, b) => new Date(a.date) - new Date(b.date));
                 setEventsArray(sortedEvents);
               })
+    },[])
+
+    const [tixArray, setTixArray] = useState([])
+
+    useEffect(() => {
+        fetch('http://localhost:5555/tickets')
+            .then(r => r.json())
+            .then(setTixArray)
     },[])
 
     const addEvent = (newEventObj) => {
@@ -77,7 +82,7 @@ function App() {
                     <Route path="/events" element={<Events addEvent={addEvent} eventsArray={eventsArray} user={user}/>} />
                     <Route path="/login" element={<Login handleLogin={setUser}/>} />
                     <Route path="/signup" element={<SignUp />} />
-                    <Route path="/profile" element={<Profile user={user} handleLogout={handleLogout} handleUpdate={handleUpdate} setUser={setUser}/>} />
+                    <Route path="/profile" element={<Profile user={user} handleLogout={handleLogout} handleUpdate={handleUpdate} setUser={setUser} tix={tixArray}/>} />
                     <Route path="*" element={<h1>404 Page Not Found</h1>} />
                 </Routes>
         </header>

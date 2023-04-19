@@ -1,15 +1,10 @@
 import { useState } from "react";
-import EditFormButton from "./EditFormButton";
 
-function EditForm({user, setUser, handleUpdate}){
+function EditForm({user, setUser, handleUpdate, hide}){
 
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
-    const [hideEditForm, setHideEditForm] = useState(true)
 
-    const handleHideEditForm = () => {
-        setHideEditForm(hideEditForm => !hideEditForm)
-    }
 
     const handleEdit = (e) => {
         e.preventDefault()
@@ -37,8 +32,7 @@ function EditForm({user, setUser, handleUpdate}){
 
     return(
         <div>
-            <EditFormButton handleHideEditForm={handleHideEditForm}/>
-            <form onSubmit={handleEdit} hidden={hideEditForm} class="mx-auto mt-8 max-w-sm ">
+            <form onSubmit={handleEdit} hidden={hide} class="mx-auto mt-8 max-w-sm ">
                 <div class="mx-auto max-w-2xl text-center justify-between gap-x-6 px-8">
                     <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl mb-4">Edit User</h2>
                 </div>
