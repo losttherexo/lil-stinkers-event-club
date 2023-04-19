@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import {useNavigate} from 'react-router-dom'
 import {useFormik} from "formik"
 import * as yup from "yup"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 function SignUp({ setUser }) {
@@ -80,6 +81,11 @@ function SignUp({ setUser }) {
     },
   });
 
+  const [show, setShow] = useState(false)
+
+  const handleShow = () => {
+    setShow(!show)
+  }
   // function handleSubmit(e) {
   //   e.preventDefault();
   //   fetch("/signup", {
@@ -122,16 +128,27 @@ function SignUp({ setUser }) {
         />
         <p style={{ color: "red" }}> {formik.errors.email}</p>
 
+
+        <div class="relative w-full">
         <label htmlFor="password">Password</label>
+        <div class="absolute inset-y-11 right-0 flex items-center px-2">
+                    <input class="hidden js-password-toggle" id="toggle" type="checkbox" />
+                    <span class="z-auto ">
+                        {show ? <FontAwesomeIcon icon="fa-solid fa-eye" onClick={handleShow}/> :  <FontAwesomeIcon icon="fa-solid fa-eye-slash" onClick={handleShow}/>
+                        }
+                    </span>
+                </div>
         <input
-          type="password"
+          type={show ? "text" : "password"}
           id="password"
           value={formik.values.password}
           onChange={formik.handleChange}
           autoComplete="current-password"
-          class="block w-full rounded-md border-0 px-3.5 py-2 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-inset focus:ring-amber-400 sm:text-sm sm:leading-6"
+          class="block w-full rounded-md border-0 px-3.5 py-2 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-inset focus:ring-amber-400 sm:text-sm sm:leading-6 js-password"
         />
         <p style={{ color: "red" }}> {formik.errors.password}</p>
+        </div>
+
 
         <label htmlFor="password">Password Confirmation</label>
         <input
