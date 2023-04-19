@@ -79,7 +79,7 @@ function Home({user, eventsArray}) {
                     initialViewState={{
                     longitude: lng,
                     latitude: lat,
-                    zoom: 3.5,
+                    zoom: 3,
                     }}
                     mapStyle="mapbox://styles/mapbox/streets-v12"
                 >
@@ -90,6 +90,7 @@ function Home({user, eventsArray}) {
                     {coordinates.map((data) => (
                         <Marker longitude={data.longtitude} latitude ={data.latitude} key={data.id}
                         onClick={() => handleMarkerClick(data)}
+                        color="transparent"
                         />
                     ))}
                     <NavigationControl position="bottom-right" />
@@ -114,14 +115,15 @@ function Home({user, eventsArray}) {
                         mapRef={mapRef}
                         latitude={selectedMarker.latitude}
                         longitude={selectedMarker.longtitude}
+                        maxWidth="400px"
+                        anchor="center"
                         closeButton={true}
                         closeOnClick={false}
                         onClose={handleClose}
                         closeOnLeave={true}
                         >
-                        <h3>{selectedMarker.name}</h3>
                         <strong>{selectedMarker.name}</strong>, in <strong>{selectedMarker.location}</strong>
-                        <img src={selectedMarker.image} alt={selectedMarker.name} />
+                        <img src={selectedMarker.image} alt={selectedMarker.name}/>
                         </Popup>
                     }
                 </Map>
