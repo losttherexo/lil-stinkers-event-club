@@ -45,6 +45,8 @@ class Venue(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
     location = db.Column(db.String, nullable=False)
+    latitude = db.Column(db.String, nullable=False)
+    longtitude = db.Column(db.String, nullable=False)
     capacity = db.Column(db.Integer, nullable=False)
     image = db.Column(db.String)
 

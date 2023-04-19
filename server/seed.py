@@ -24,9 +24,9 @@ if __name__ == '__main__':
         # f2 = Fan(username='123toast', _password_hash='123456', password_confirmation = '123456', first_name='Marcus', last_name='Hidalgo', dob='06/08/1996')
         # fans = [f1, f2]
 
-        v1 = Venue(name='Stardust', location='Orlando, FL', capacity=200, image='https://bungalower.com/wp-content/uploads/2017/06/BEK_3494-1024x683.jpg')
-        v2 = Venue(name='The Bar', location='Online', capacity=45, image='https://images.squarespace-cdn.com/content/v1/5cbf562816b6400ee5dc5f7e/1588008787320-HCZWQUF5UW5V6SURPYRB/DSC_9058-Edit.jpg')
-        v3 = Venue(name='Elsewhere (The Hall)', location='Brooklyn, NY', capacity=675, image='https://www.datocms-assets.com/46309/1631108277-the-hallcarousel3.jpg')
+        v1 = Venue(name='Stardust', location='Orlando, FL', latitude='28.5384', longtitude='-81.3789', capacity=200, image='https://bungalower.com/wp-content/uploads/2017/06/BEK_3494-1024x683.jpg')
+        v2 = Venue(name='The Bar', location='Denver, CO', latitude='39.7392', longtitude='-104.9903', capacity=45, image='https://images.squarespace-cdn.com/content/v1/5cbf562816b6400ee5dc5f7e/1588008787320-HCZWQUF5UW5V6SURPYRB/DSC_9058-Edit.jpg')
+        v3 = Venue(name='Elsewhere (The Hall)', location='Brooklyn, NY', latitude='40.6782', longtitude='-73.9442', capacity=675, image='https://www.datocms-assets.com/46309/1631108277-the-hallcarousel3.jpg')
         venues=[v1, v2, v3]
 
         e1 = Event(name='A Very Toasty Tour', price=10, date='06/09/2023', description='Best night of ur freaking life', image='https://pbs.twimg.com/media/FqTmBYIWYAEG_cf?format=jpg&name=large', venue=v1)

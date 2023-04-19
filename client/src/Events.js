@@ -5,15 +5,15 @@ import AddEventForm from './AddEventForm'
 
 function Events({eventsArray, addEvent, user}){
 
-    const eventComponents = eventsArray.map(event => 
-        <EventCard 
-            key={event.id} 
-            name={event.name} 
-            date={event.date} 
-            description={event.description} 
-            age_restriction={event.age_restriction} 
-            image={event.image} 
-            tickets={event.tickets} 
+    const eventComponents = eventsArray.map(event =>
+        <EventCard
+            key={event.id}
+            name={event.name}
+            date={event.date}
+            description={event.description}
+            age_restriction={event.age_restriction}
+            image={event.image}
+            tickets={event.tickets}
             price={event.price}
             location={event.venue.name}
             event={event}
@@ -21,12 +21,13 @@ function Events({eventsArray, addEvent, user}){
         />
     )
 
+
     const [hideAddForm, setHideAddForm] = useState(true)
     const handleHideAddForm = () => {
         setHideAddForm(hideAddForm => !hideAddForm)
     }
-    
-    
+
+
 
     return(
         <div>

@@ -1,8 +1,8 @@
-"""help
+"""added longtitude and latitude
 
-Revision ID: 78db0a6f5476
-Revises: 31217cdafc08
-Create Date: 2023-04-19 17:51:18.302889
+Revision ID: 356648ccbce4
+Revises: 
+Create Date: 2023-04-18 19:03:28.751149
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '78db0a6f5476'
-down_revision = '31217cdafc08'
+revision = '356648ccbce4'
+down_revision = None
 branch_labels = None
 depends_on = None
 
@@ -32,6 +32,8 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(), nullable=False),
     sa.Column('location', sa.String(), nullable=False),
+    sa.Column('latitude', sa.String(), nullable=False),
+    sa.Column('longtitude', sa.String(), nullable=False),
     sa.Column('capacity', sa.Integer(), nullable=False),
     sa.Column('image', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')

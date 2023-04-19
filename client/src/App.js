@@ -76,7 +76,7 @@ function App() {
         <header className="App-header">
             <Navbar user={user} setUser={setUser} onLogout={handleLogout}/>
                 <Routes>
-                    <Route path="/" element={<Home user={user}/>} />
+                    <Route path="/" element={<Home user={user} eventsArray={eventsArray}/>} />
                     <Route path="/venues" element={<Venues venuesArray={venuesArray}/>} />
                     {/* <Route path="/events" element={<Events eventsArray={eventsArray} search={search}/>} /> */}
                     <Route path="/events" element={<Events addEvent={addEvent} eventsArray={eventsArray} user={user}/>} />

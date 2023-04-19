@@ -220,7 +220,10 @@ class Venues(Resource):
         new_venue = Venue(
             name=data['name'],
             location=data['location'],
-            capacity=data['capacity']
+            latitude=data['latitude'],
+            longtitude=data['longtitude'],
+            capacity=data['capacity'],
+            image=data['image']
         )
         db.session.add(new_venue)
         db.session.commit()
