@@ -7,7 +7,7 @@ import Map, {
   FullscreenControl,
   GeolocateControl,
 } from "react-map-gl";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import EventMapCard from "./EventMapCard";
 
 
@@ -16,6 +16,18 @@ function Home({user, eventsArray}) {
   const [lat, setLat] = useState(39.0997);
   const [coordinates, setCoordinates] = useState([])
   const [showPopup, setShowPopup] = useState(true)
+//   const [isShown, setIsShown] = useState(false)
+  const [selectedMarker, setSelectedMarker] = useState(null)
+  const mapRef = useRef(null);
+
+  const handleMarkerClick = (marker) => {
+    setSelectedMarker(marker);
+  };
+
+  const handleClose = () => {
+    setSelectedMarker(null);
+  };
+
 
     useEffect(() => {
         fetch('http://localhost:5555/venues')
@@ -42,6 +54,9 @@ function Home({user, eventsArray}) {
         setLat={setLat}
         user={user}
         event={event}
+        selectedMarker={selectedMarker}
+        mapRef={mapRef}
+        handleClose={handleClose}
         />
     )
 
@@ -58,7 +73,7 @@ function Home({user, eventsArray}) {
                     height: "80vh",
                     borderRadius: "15px",
                     border: "2px solid black",
-                    marginLeft: "50px"
+                    marginLeft: "50px",
 
                     }}
                     initialViewState={{
@@ -68,9 +83,14 @@ function Home({user, eventsArray}) {
                     }}
                     mapStyle="mapbox://styles/mapbox/streets-v12"
                 >
-                    <Marker longitude={lng} latitude={lat} />
+                    <Marker longitude={lng} latitude={lat}>
+
+                    </Marker>
+
                     {coordinates.map((data) => (
-                        <Marker longitude={data.longtitude} latitude ={data.latitude} key={data.id}/>
+                        <Marker longitude={data.longtitude} latitude ={data.latitude} key={data.id}
+                        onClick={() => handleMarkerClick(data)}
+                        />
                     ))}
                     <NavigationControl position="bottom-right" />
                     <FullscreenControl />
@@ -79,12 +99,31 @@ function Home({user, eventsArray}) {
                         <Popup longitude={data.longtitude} latitude={data.latitude}
                             maxWidth="200px"
                             anchor="bottom"
+                            // closeButton={true}
+                            // closeOnClick={false}
+                            // openOnClick={true}
                             onClose={() => setShowPopup(false)}
-                            onClick={() => setShowPopup(true)}>
+                            onClick={() => setShowPopup(true)}
+                            >
                             <strong>{data.name}</strong>, in <strong>{data.location}</strong>
                             <img src={data.image} alt={data.name} />
                         </Popup>
                     ))}
+                    {selectedMarker &&
+                        <Popup
+                        mapRef={mapRef}
+                        latitude={selectedMarker.latitude}
+                        longitude={selectedMarker.longtitude}
+                        closeButton={true}
+                        closeOnClick={false}
+                        onClose={handleClose}
+                        closeOnLeave={true}
+                        >
+                        <h3>{selectedMarker.name}</h3>
+                        <strong>{selectedMarker.name}</strong>, in <strong>{selectedMarker.location}</strong>
+                        <img src={selectedMarker.image} alt={selectedMarker.name} />
+                        </Popup>
+                    }
                 </Map>
             </div>
             <div class='py-10 gap-6 flex flex-col col-span-2 justify-center text-center items-center'>

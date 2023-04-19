@@ -1,12 +1,13 @@
 import React, {useState} from 'react'
 import BuyTicket from "./BuyTicket"
 
+
 function EventMapCard({name, image, location, latitude, longtitude, setLat, setLng, description, price, ageRestriction, venue, user, event}) {
     function handleCoordinates() {
-        // console.log(latitude)
-        // console.log(longtitude)
+
         setLat(latitude)
         setLng(longtitude)
+
     }
 
     const [isOpen, setIsOpen] = useState(false);
@@ -40,6 +41,7 @@ function EventMapCard({name, image, location, latitude, longtitude, setLat, setL
             </div>
         )}
     </div>
+
   )
 }
 
