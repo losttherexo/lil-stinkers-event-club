@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 
 
-
 function AddEventForm({addEvent}){
 
     const [name, setName] = useState('')

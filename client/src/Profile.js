@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { useNavigate, Link } from 'react-router-dom';
 import EditForm from './EditForm';
 import TicketCard from './TicketCard';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 function Profile({user, setUser , handleLogout, handleUpdate, tix}){
     const navigate = useNavigate()
     const [hideEditForm, setHideEditForm] = useState(true)
@@ -55,17 +55,17 @@ function Profile({user, setUser , handleLogout, handleUpdate, tix}){
     return(
         <div>
         <div class="flex flex-col mx-auto max-w-2xl items-center text-center justify-between gap-x-6 p-6  py-10 lg:px-8">
-            <h1 class="text-5xl font-bold tracking-tight text-slate-900 text-left py-6">Hi {user && user.first_name}!</h1>
-
-
+            <h1 class="text-5xl font-bold tracking-tight text-slate-900 text-left py-6">
+                Hi {user && user.first_name} <FontAwesomeIcon icon="fa-solid fa-user-secret"/>
+            </h1>
 
             <div class="grid grid-cols-3 gap-8 w-screen max-w-3xl py-10 content-center">
                 <div class="col-span-2 text-left px-12 justify-left py-10 border rounded shadow-md">
                     <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-3xl py-6">Your Information</h2>
                     <div class="text-left">
-                    <h3 class="text-xl tracking-tight text-slate-900 py-2">Name: {user && user.first_name} {user && user.last_name}</h3>
-                    <h3 class="text-xl tracking-tight text-slate-900 py-2">Email: {user && user.email}</h3>
-                    <h3 class="text-xl tracking-tight text-slate-900 py-2">Birthday: {formattedDate}</h3>
+                    <h3 class="text-xl tracking-tight text-slate-900 py-2"><FontAwesomeIcon icon="fa-solid fa-signature"/> : {user && user.first_name} {user && user.last_name}</h3>
+                    <h3 class="text-xl tracking-tight text-slate-900 py-2"><FontAwesomeIcon icon="fa-solid fa-envelope-circle-check"/> : {user && user.email}</h3>
+                    <h3 class="text-xl tracking-tight text-slate-900 py-2"><FontAwesomeIcon icon="fa-solid fa-cake-candles"/> : {formattedDate}</h3>
                     </div>
                 </div>
                 <div class=' grid grid-row content-center gap-8'>

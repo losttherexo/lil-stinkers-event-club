@@ -12,8 +12,8 @@ import {
   } from "react-router-dom";
 import Profile from "./Profile"
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
-library.add(faEye,faEyeSlash)
+import { faCakeCandles,faEnvelopeCircleCheck,faSignature,faUserSecret ,faEye, faEyeSlash, faHome, faUsers, faPowerOff, faPoo, faAddressCard, faMapLocation, faChampagneGlasses} from '@fortawesome/free-solid-svg-icons'
+library.add(faCakeCandles,faEnvelopeCircleCheck,faSignature,faUserSecret ,faEye,faEyeSlash, faHome, faUsers, faPowerOff, faPoo, faAddressCard, faMapLocation, faChampagneGlasses)
 
 function App() {
 
