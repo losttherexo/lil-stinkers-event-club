@@ -4,7 +4,7 @@ import {NavLink, Link} from 'react-router-dom'
 import './index.css';
 
 
-function Navbar({user, onLogout}) {
+function Navbar({user, setUser, onLogout}) {
     const [nav, setNav] = useState(false)
 
     const handleNav = () => {
@@ -14,7 +14,10 @@ function Navbar({user, onLogout}) {
     function handleLogout() {
         fetch("/logout", {
             method: "DELETE",
-        }).then(() => onLogout());
+        }).then(
+            // () => onLogout()
+            setUser(null)
+        );
     }
     return(
         <header class="bg-slate-900">
@@ -50,7 +53,7 @@ function Navbar({user, onLogout}) {
                 </h1>
                 <ul >
                     <li className='p-4 border-b border-stone-400'>
-                        <NavLink to='./'>Home</NavLink>
+                        <NavLink to='/profile'>Profile</NavLink>
                     </li>
                     <li className='p-4 border-b border-stone-400'>
                         <NavLink to='/venues'>Venues</NavLink>

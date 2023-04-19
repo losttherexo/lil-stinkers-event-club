@@ -36,7 +36,7 @@ function App() {
         setUser(null);
     }
 
-    function handleUpdate() {
+    function handleUpdate(user) {
         setUser(user)
     }
 
@@ -65,15 +65,15 @@ function App() {
   return (
     <div className="App">
         <header className="App-header">
-            <Navbar user={user} onLogout={handleLogout}/>
+            <Navbar user={user} setUser={setUser} onLogout={handleLogout}/>
                 <Routes>
                     <Route path="/" element={<Home user={user}/>} />
                     <Route path="/venues" element={<Venues venuesArray={venuesArray}/>} />
                     {/* <Route path="/events" element={<Events eventsArray={eventsArray} search={search}/>} /> */}
                     <Route path="/events" element={<Events eventsArray={eventsArray} user={user}/>} />
-                    <Route path="/login" element={<Login onLogin={handleLogin}/>} />
+                    <Route path="/login" element={<Login handleLogin={setUser}/>} />
                     <Route path="/signup" element={<SignUp />} />
-                    <Route path="/profile" element={<Profile user={user} handleLogout={handleLogout} handleUpdate={handleUpdate}/>} />
+                    <Route path="/profile" element={<Profile user={user} handleLogout={handleLogout} handleUpdate={handleUpdate} setUser={setUser}/>} />
                     <Route path="*" element={<h1>404 Page Not Found</h1>} />
                 </Routes>
         </header>

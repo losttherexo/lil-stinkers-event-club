@@ -82,7 +82,8 @@ class Login(Resource):
         session['fan_id'] = user.id
         return jsonify({
             "id": user.id,
-            "email": user.email
+            "email": user.email,
+            "first_name": user.first_name
         })
 
 

@@ -3,7 +3,7 @@ import {Link, useNavigate} from 'react-router-dom'
 import './index.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-function Login({ onLogin }) {
+function Login({ handleLogin }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [show, setShow] = useState(false)
@@ -24,7 +24,7 @@ function Login({ onLogin }) {
       body: JSON.stringify({ email, password }),
     }).then((r) => {
       if (r.ok) {
-        r.json().then((user) => onLogin(user))
+        r.json().then((user) => handleLogin(user))
         // console.log(username);
       }
     });
