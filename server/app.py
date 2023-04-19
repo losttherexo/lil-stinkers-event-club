@@ -92,7 +92,7 @@ class Logout(Resource):
         # username = request.get_json().get('username')
         # user = Fan.query.filter(Fan.username == username).first()
         # flash(f"You have been logged out! See you again, {username}")
-        session.pop("user", None)
+        session.pop("fan_id", None)
 
         return {}, 204
 
