@@ -7,7 +7,7 @@ import Map, {
   FullscreenControl,
   GeolocateControl,
 } from "react-map-gl";
-import { useState } from "react";
+import { useState, useSelector } from "react";
 import EventMapCard from "./EventMapCard";
 
 function Home({user, eventsArray}) {
@@ -55,6 +55,11 @@ function Home({user, eventsArray}) {
                     mapStyle="mapbox://styles/mapbox/streets-v12"
                 >
                     <Marker longitude={lng} latitude={lat} />
+                    <Marker longitude={-81.3789} latitude={28.5384} />
+                    <Marker longitude={-104.9903} latitude={39.7392} />
+                    <Marker longitude={-73.9442} latitude={40.6782} />
+
+
                     <NavigationControl position="bottom-right" />
                     <FullscreenControl />
                     <GeolocateControl />
