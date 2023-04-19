@@ -53,7 +53,7 @@ function Profile({user, setUser , handleLogout, handleUpdate}){
 
     return(
         <div class="mx-auto max-w-2xl text-center justify-between gap-x-6 p-6 lg:px-8">
-            <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">Welcome {user && user.username}</h2>
+            <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">Welcome {user && user.first_name}</h2>
 
             <div>
                 <form onSubmit={handleEdit} class="mx-auto mt-16 max-w-sm sm:mt-20">
