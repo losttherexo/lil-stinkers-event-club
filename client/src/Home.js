@@ -10,6 +10,7 @@ import Map, {
 import { useState, useEffect } from "react";
 import EventMapCard from "./EventMapCard";
 
+
 function Home({user, eventsArray}) {
   const [lng, setLng] = useState(-94.5786);
   const [lat, setLat] = useState(39.0997);
@@ -34,15 +35,21 @@ function Home({user, eventsArray}) {
         key={event.id}
         name={event.name}
         image={event.image}
+        description={event.description}
+        ageRestriction={event.age_restriction}
+        price={event.price}
+        venue={event.venue.name}
         location={event.venue.location}
         latitude={event.venue.latitude}
         longtitude={event.venue.longtitude}
         setLng={setLng}
         setLat={setLat}
+        user={user}
+        event={event}
         />
   )
 
-
+  
 
   return (
     <div >
@@ -56,7 +63,7 @@ function Home({user, eventsArray}) {
                     width: "50vw",
                     height: "80vh",
                     borderRadius: "15px",
-                    border: "2px solid red",
+                    border: "2px solid black",
                     marginLeft: "50px"
 
                     }}
@@ -87,6 +94,7 @@ function Home({user, eventsArray}) {
                     <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-3xl text-center p-6">Upcoming Events</h2>
                     {eventComponents}
                 </div>
+                
             </div>
         </div>
     </div>

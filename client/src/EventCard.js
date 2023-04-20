@@ -15,7 +15,7 @@ function EventCard({name, date, description, location, image, age_restriction, p
 
 
     return(
-        <div class='mx-10 mb-8 border rounded shadow-sm p-6'>
+        <div class='mx-10 mb-8 border rounded shadow-md p-6'>
             <h1 class='p-4 text-2xl font-medium'>{name}</h1>
             <img src={image} alt={name} class='flex sm:w-3/4 md:w-2/3  mx-auto mb-1'/>
             <p class='font-medium text-lg'>{location}</p>
