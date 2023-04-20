@@ -7,7 +7,7 @@ function Venues({venuesArray}){
 
     return(
         <div class='flex flex-col justify-center text-center'>
-            <h1 class='p-6 m-3 text-4xl font-bold'>Welcome to Venues</h1>
+            <h1 class='p-6 m-3 text-4xl font-bold'>Our Venues</h1>
             {venueComponents}
         </div>
     )

@@ -28,7 +28,7 @@ function BuyTicket({event, user}){
 
     return (
         <div>
-          <button onClick={handleClick} class='border rounded-lg shadow-sm mx-2 px-2 hover:bg-slate-900 hover:text-white'>Buy Tix</button>
+          <button onClick={handleClick} class='bg-slate-900 text-white border rounded-lg shadow-md mx-2 px-2 hover:bg-white hover:text-slate-900'>Buy Tix</button>
           {isOpen && (
             <div className="fixed top-0 left-0 w-full h-full bg-gray-500 bg-opacity-50 flex justify-center items-center">
             <div className="bg-white rounded shadow p-4">
