@@ -7,7 +7,7 @@ function Profile({user, setUser , handleLogout, handleUpdate, tix}){
     const navigate = useNavigate()
     const [hideEditForm, setHideEditForm] = useState(true)
 
-    const tixComponents = tix.map(tix => <TicketCard key={tix.id} event={tix.event.name}/>)
+    const tixComponents = tix.map(tix => <TicketCard key={tix.id} event={tix.event.name} date={tix.event.date} location={tix.event.venue.name} image={tix.event.image}/>)
 
     const handleHideEditForm = () => {
         setHideEditForm(hideEditForm => !hideEditForm)
@@ -36,7 +36,7 @@ function Profile({user, setUser , handleLogout, handleUpdate, tix}){
     return(
         <div class="flex flex-col mx-auto max-w-2xl items-center text-center justify-between gap-x-6 p-6 lg:px-8">
             <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">Welcome {user && user.first_name}</h2>
-            {tixComponents}
+            
             <div class='flex flex-row my-4'>
                 <button onClick={handleHideEditForm} class="block w-32 md:w-48 lg:w-56 mx-1 py-2.5 rounded-md bg-slate-900  text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-950" >Edit User</button>
                 <button onClick={handleDelete} class="block w-32 md:w-48 lg:w-56 mx-1 rounded-md bg-amber-300  text-center text-sm font-semibold text-slate-950 shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-950 border-solid border-2 border-slate-950"><Link to="./">Delete User</Link></button>
@@ -44,8 +44,19 @@ function Profile({user, setUser , handleLogout, handleUpdate, tix}){
             <div class='flex'>
                 <EditForm user={user} setUser={setUser} handleUpdate={handleUpdate} hide={hideEditForm}/>
             </div>
+            <div class="grid grid-cols-3 gap-4 w-screen max-w-3xl">
+                <div class="col-span-2">
+                    <h2>Your Information</h2>
+                </div>
+                <div class="py-10">
+                    
+                    <div class='p-6 gap-6 col justify-center text-center items-center w-screen max-w-lg '>
+                    <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-2xl text-center py-6">Your Upcoming Events</h2>
+                        {tixComponents}
+                    </div>
+                </div>
             </div>
-        // </div>
+        </div>
     )
 }
 
