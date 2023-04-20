@@ -16,38 +16,38 @@ function Home({user, eventsArray}) {
   const [lat, setLat] = useState(39.0997);
   const [coordinates, setCoordinates] = useState([])
 
-  useEffect(() => {
-    fetch('http://localhost:5555/venues')
-        .then(r => r.json())
-        .then(data => {
-            console.log(data)
-            setCoordinates(data);
-          })
-},[])
+    useEffect(() => {
+        fetch('http://localhost:5555/venues')
+            .then(r => r.json())
+            .then(data => {
+                console.log(data)
+                setCoordinates(data);
+            })
+    },[])
 
 
 
 
 
 
-  const eventComponents = eventsArray.map(event =>
-    <EventMapCard
-        key={event.id}
-        name={event.name}
-        image={event.image}
-        description={event.description}
-        ageRestriction={event.age_restriction}
-        price={event.price}
-        venue={event.venue.name}
-        location={event.venue.location}
-        latitude={event.venue.latitude}
-        longtitude={event.venue.longtitude}
-        setLng={setLng}
-        setLat={setLat}
-        user={user}
-        event={event}
+    const eventComponents = eventsArray.map(event =>
+        <EventMapCard
+            key={event.id}
+            name={event.name}
+            image={event.image}
+            description={event.description}
+            ageRestriction={event.age_restriction}
+            price={event.price}
+            venue={event.venue.name}
+            location={event.venue.location}
+            latitude={event.venue.latitude}
+            longtitude={event.venue.longtitude}
+            setLng={setLng}
+            setLat={setLat}
+            user={user}
+            event={event}
         />
-  )
+    )
 
   
 
@@ -94,7 +94,6 @@ function Home({user, eventsArray}) {
                     <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-3xl text-center p-6">Upcoming Events</h2>
                     {eventComponents}
                 </div>
-                
             </div>
         </div>
     </div>

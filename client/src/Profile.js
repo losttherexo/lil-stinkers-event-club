@@ -27,7 +27,7 @@ function Profile({user, setUser , handleLogout, handleUpdate, tix}){
         const month = String(date.getUTCMonth() + 1).padStart(2, '0');
         const day = String(date.getUTCDate()).padStart(2, '0');
         return `${month}/${day}/${year}`;
-      };
+    };
 
     const formattedDate = formatDate(user && user.dob);
 
@@ -77,13 +77,13 @@ function Profile({user, setUser , handleLogout, handleUpdate, tix}){
                 </div>
             </div>
             {isOpen && (
-            <div className="fixed top-0 left-0 w-full h-full bg-gray-500 bg-opacity-50 flex justify-center items-center">
-            <div className="bg-white rounded shadow p-4">
-                <h2 class='py-2'>Are you sure you don't wanna vibe?</h2>
-                <button onClick={toggleModal} className="hover:bg-slate-900 hover:text-white border shadow font-bold px-4 rounded">Pls get me out of here</button>
-            </div>
-            </div>
-        )}
+                <div className="fixed top-0 left-0 w-full h-full bg-gray-500 bg-opacity-50 flex justify-center items-center">
+                    <div className="bg-white rounded shadow p-4">
+                        <h2 class='py-2'>Are you sure you don't wanna vibe?</h2>
+                        <button onClick={toggleModal} className="hover:bg-slate-900 hover:text-white border shadow font-bold px-4 rounded">Pls get me out of here</button>
+                    </div>
+                </div>
+            )}
         </div>
     )
 }

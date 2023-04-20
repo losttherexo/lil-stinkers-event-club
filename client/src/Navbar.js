@@ -23,14 +23,14 @@ function Navbar({user, setUser, onLogout}) {
         <header class="bg-slate-900">
             <nav class="mx-auto flex max-w-7xl items-center justify-between gap-x-6 p-6 lg:px-8">
                 <div class="hidden lg:flex lg:gap-x-12">
-                <NavLink className="NavLink" to = "./" end>Home</NavLink>
-                <NavLink className="NavLink" to = "/venues">Venues</NavLink>
-                <NavLink className="NavLink" to = "/events">Events</NavLink>
-                {user ? (
-                    <Link className="NavLink" to="/profile">Profile</Link>
-                ) : (
-                    <Link className="NavLink" to="/login">Profile</Link>
-                )}
+                    <NavLink className="NavLink" to = "./" end>Home</NavLink>
+                    <NavLink className="NavLink" to = "/venues">Venues</NavLink>
+                    <NavLink className="NavLink" to = "/events">Events</NavLink>
+                    {user ? (
+                        <Link className="NavLink" to="/profile">Profile</Link>
+                    ) : (
+                        <Link className="NavLink" to="/login">Profile</Link>
+                    )}
                 </div>
                 {/* <div class="flex flex-1 items-center justify-end gap-x-6">
                     <Link className="signup" to="/signup">Sign Up</Link>
@@ -64,7 +64,6 @@ function Navbar({user, setUser, onLogout}) {
                 </ul>
             </div>
         </header>
-
     )
 }
 export default Navbar
