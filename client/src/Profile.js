@@ -8,7 +8,9 @@ function Profile({user, setUser , handleLogout, handleUpdate, tix}){
     const [hideEditForm, setHideEditForm] = useState(true)
     const [isOpen, setIsOpen] = useState(false);
 
-    const tixComponents = tix.map(tix => <TicketCard key={tix.id} event={tix.event.name} date={tix.event.date} location={tix.event.venue.name} image={tix.event.image}/>)
+    const tixComponents = tix
+        .filter(tix => tix.fan_id === user.id)
+        .map(tix => <TicketCard key={tix.id} event={tix.event.name} date={tix.event.date} location={tix.event.venue.name} image={tix.event.image}/>)
     
     const toggleModal = () => {
       setIsOpen(!isOpen);
