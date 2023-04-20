@@ -49,7 +49,7 @@ function Navbar({user, setUser, onLogout}) {
             </nav>
             <div className={nav ? 'z-10 text-white fixed left-0 top-0 w-[40%] h-full border-r border-stone-400 bg-slate-900 ease-in-out duration-500' : 'fixed left-[-100%]'}>
                 <h1 className='w-full medium:text-xl text-2xl font-bold p-4'>
-                    <NavLink exact to='/'>Lil Stinker's Club</NavLink>
+                    <NavLink to='/' end>Lil Stinker's Event Club</NavLink>
                 </h1>
                 <ul >
                     <li className='p-4 border-b border-stone-400'>
