@@ -25,10 +25,13 @@ function Login({ handleLogin }) {
     }).then((r) => {
       if (r.ok) {
         r.json().then((user) => handleLogin(user))
+        nagigate('/events')
         // console.log(username);
       }
+      else {
+        alert('Username or password not found!');
+      }
     });
-    nagigate('/events')
   }
 
   return (
