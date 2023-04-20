@@ -76,7 +76,7 @@ function SignUp({ setUser }) {
                     r.json().then((user) => setUser(user));
                 }
             });
-            navigate('/')
+            navigate('/login')
         },
     });
 
