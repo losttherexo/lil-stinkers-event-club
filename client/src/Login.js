@@ -7,6 +7,12 @@ function Login({ handleLogin }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [show, setShow] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsOpen(!isOpen);
+  };
+
 
   const handleShow = () => {
     setShow(!show)
@@ -26,17 +32,15 @@ function Login({ handleLogin }) {
       if (r.ok) {
         r.json().then((user) => handleLogin(user))
         nagigate('/events')
-        // console.log(username);
       }
       else {
-        alert('Username or password not found!');
+        toggleModal()
       }
     });
   }
 
   return (
     <div>
-
         <form onSubmit={handleSubmit} class="mx-auto mt-16 max-w-sm sm:mt-20">
             <div class="mx-auto max-w-2xl text-center justify-between gap-x-6 p-6 lg:px-8">
                 <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">Login</h2>
@@ -80,9 +84,16 @@ function Login({ handleLogin }) {
                 <p>Don't have an account?</p>
                 <Link className="signupbtn" to="/signup">Sign Up!</Link>
             </div>
-
         </form>
-
+        {isOpen && (
+            <div className="fixed top-0 left-0 w-full h-full bg-gray-500 bg-opacity-50 flex justify-center items-center">
+            <div className="bg-white rounded shadow p-4 text-center">
+                <h2>Stop Right There!!!</h2>
+                <p className='mb-2'>You are an impostor and clearly not a lil stinker.</p>
+                <button onClick={toggleModal} className="hover:bg-slate-900 hover:text-white border shadow font-bold px-4 rounded">Try Again</button>
+            </div>
+            </div>
+        )}
     </div>
   );
 }
