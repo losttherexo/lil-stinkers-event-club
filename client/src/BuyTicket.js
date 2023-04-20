@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-const BuyTicket = (event) => {
+function BuyTicket({event, user}){
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -17,12 +17,13 @@ const BuyTicket = (event) => {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              fan_id: event.user.id,
-              event_id: event.event.id,
+              fan_id: user.id,
+              event_id: event.id
             }),
         })
         .then((r) => r.json())
-        // console.log(event.event)
+        console.log(event.id)
+        console.log(user.id)
     }
 
     return (
