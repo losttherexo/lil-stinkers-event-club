@@ -62,9 +62,9 @@ function Profile({user, setUser , handleLogout, handleUpdate, tix}){
             <div class='flex'>
                 <EditForm user={user} setUser={setUser} handleUpdate={handleUpdate} hide={hideEditForm}/>
             </div>
-            <div class="grid grid-cols-4 gap-4 w-screen max-w-3xl py-10">
-                <div class="col-span-2 text-left items-left py-10">
-                    <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-3xl text-left py-6">Your Information</h2>
+            <div class="grid md:grid-rows-none lg:grid-cols-4 gap-4 w-screen max-w-3xl py-10">
+                <div class="col-span-2 md:text-center lg:text-left items-left py-10">
+                    <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-3xl py-6">Your Information</h2>
                     <h3 class="text-xl tracking-tight text-slate-900 py-2">Name: {user && user.first_name} {user && user.last_name}</h3>
                     <h3 class="text-xl tracking-tight text-slate-900 py-2">Email: {user && user.email}</h3>
                     <h3 class="text-xl tracking-tight text-slate-900 py-2">Birthday: {formattedDate}</h3>

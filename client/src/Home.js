@@ -33,10 +33,10 @@ function Home({user, eventsArray}) {
 
   return (
     <div >
-        <h1 class="text-5xl text-center font-bold tracking-tight text-slate-900 text-left py-12">Welcome to the Lil Stinker's Event Club</h1>
-        <p class="text-xl text-center font-md tracking-tight text-slate-900 text-left">A hub for Lil Stinker's to find local events or host the afterparty!</p>
-        <div class="grid grid-cols-4  w-screen  py-10">
-            <div class="col-span-2 text-left items-left py-10">
+        <h1 class="text-5xl text-center font-bold tracking-tight text-slate-900 py-12">Welcome to the Lil Stinker's Event Club</h1>
+        <p class="text-xl text-center font-md tracking-tight text-slate-900">A hub for Lil Stinker's to find local events or host the afterparty!</p>
+        <div class="grid md:grid-rows-none lg:grid-cols-4  w-screen  py-10">
+            <div class="col-span-2 md:text-center lg:text-left md:items-center lg:items-left py-10">
                 <Map
                     mapboxAccessToken={'pk.eyJ1IjoiYmFvdmluaDI3MDkiLCJhIjoiY2xnbzZlaG1vMGJtZjNsbGgwYTE2OHp5bSJ9.X4lEWBmesW4LKgSWp5G6LQ'}
                     style={{
