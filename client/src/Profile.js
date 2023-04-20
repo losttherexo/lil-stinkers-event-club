@@ -13,6 +13,17 @@ function Profile({user, setUser , handleLogout, handleUpdate, tix}){
         setHideEditForm(hideEditForm => !hideEditForm)
     }
 
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        const year = date.getUTCFullYear();
+        const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+        const day = String(date.getUTCDate()).padStart(2, '0');
+        return `${month}/${day}/${year}`;
+      };
+
+    const formattedDate = formatDate(user && user.dob);
+
+
     useEffect(() => {
         if (!user) {
             fetch("/check_session").then((response) => {
@@ -48,7 +59,7 @@ function Profile({user, setUser , handleLogout, handleUpdate, tix}){
                     <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-3xl text-left py-6">Your Information</h2>
                     <h3 class="text-xl tracking-tight text-slate-900 py-2">Name: {user && user.first_name} {user && user.last_name}</h3>
                     <h3 class="text-xl tracking-tight text-slate-900 py-2">Email: {user && user.email}</h3>
-                    <h3 class="text-xl tracking-tight text-slate-900 py-2">Birthday: {user && user.dob}</h3>
+                    <h3 class="text-xl tracking-tight text-slate-900 py-2">Birthday: {formattedDate}</h3>
                 </div>
                 <div>
                     <div class='py-10 gap-6 col justify-center text-center items-center w-screen max-w-lg '>
