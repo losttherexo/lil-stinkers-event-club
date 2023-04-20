@@ -23,6 +23,7 @@ function Navbar({user, setUser, onLogout}) {
         <header class="bg-slate-900 fixed w-full z-10 top-0">
             <nav class="mx-auto flex max-w-7xl items-center justify-between gap-x-6 p-6 lg:px-8">
                 <div class="hidden lg:flex lg:gap-x-12">
+                    <NavLink className="NavLink" to='/' end>Lil Stinker's Event Club</NavLink>
                     <NavLink className="NavLink" to = "./" end>Home <FontAwesomeIcon icon="fa-solid fa-house"/></NavLink>
                     <NavLink className="NavLink" to = "/venues">Venues <FontAwesomeIcon icon="fa-solid fa-map-location"/></NavLink>
                     <NavLink className="NavLink" to = "/events">Events <FontAwesomeIcon icon="fa-solid fa-champagne-glasses"/></NavLink>
