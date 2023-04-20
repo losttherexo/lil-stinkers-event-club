@@ -88,7 +88,7 @@ function Home({user, eventsArray}) {
                     <GeolocateControl />
                     {coordinates.map((data) => (
                         <Popup longitude={data.longtitude} latitude={data.latitude}
-                            maxWidth="200px"
+                            maxWidth="150px"
                             anchor="bottom"
                             // closeButton={true}
                             // closeOnClick={false}
