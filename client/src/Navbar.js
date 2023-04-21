@@ -20,7 +20,7 @@ function Navbar({user, setUser, onLogout}) {
         );
     }
     return(
-        <header class="bg-slate-900">
+        <header class="bg-slate-900 fixed w-full z-10 top-0">
             <nav class="mx-auto flex max-w-7xl items-center justify-between gap-x-6 p-6 lg:px-8">
                 <div class="hidden lg:flex lg:gap-x-12">
                     <NavLink className="NavLink" to = "./" end>Home <FontAwesomeIcon icon="fa-solid fa-house"/></NavLink>
@@ -47,18 +47,18 @@ function Navbar({user, setUser, onLogout}) {
                     <SlMenu size={20}/>
                 </button>
             </nav>
-            <div className={nav ? 'z-10 text-white fixed left-0 top-0 w-[40%] h-full border-r border-stone-400 bg-slate-900 ease-in-out duration-500' : 'fixed left-[-100%]'}>
-                <h1 className='w-full medium:text-xl text-2xl font-bold p-4'>
+            <div className={nav ? 'z-10 text-white fixed left-0 top-0 w-[40%] h-full border-r border-stone-400 bg-slate-900 ease-in-out duration-500 md:hidden' : ' fixed left-[-100%]'}>
+                <h1 className='w-full medium:text-xl text-2xl font-bold p-4' onClick={handleNav}>
                     <NavLink to='/' end>Lil Stinker's Event Club</NavLink>
                 </h1>
                 <ul >
-                    <li className='p-4 border-b border-stone-400'>
+                    <li className='p-4 border-b border-stone-400' onClick={handleNav}>
                         <NavLink to='/profile'>Profile <FontAwesomeIcon icon="fa-solid fa-address-card"/></NavLink>
                     </li>
-                    <li className='p-4 border-b border-stone-400'>
+                    <li className='p-4 border-b border-stone-400' onClick={handleNav}>
                         <NavLink to='/venues'>Venues <FontAwesomeIcon icon="fa-solid fa-map-location"/></NavLink>
                     </li>
-                    <li className='p-4 border-b border-stone-400'>
+                    <li className='p-4 border-b border-stone-400' onClick={handleNav}>
                         <NavLink to='/events'>Events <FontAwesomeIcon icon="fa-solid fa-champagne-glasses"/></NavLink>
                     </li>
                 </ul>

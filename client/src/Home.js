@@ -61,7 +61,7 @@ function Home({user, eventsArray}) {
     )
 
   return (
-    <div >
+    <div class='mt-28'>
         <h1 class="text-5xl text-center font-bold tracking-tight text-slate-900 py-12">Welcome to the Lil Stinker's Event Club</h1>
         <p class="text-xl text-center font-md tracking-tight text-slate-900">A hub for Lil Stinker's to find local events or host the afterparty!</p>
         <div class="grid md:grid-rows-none lg:grid-cols-4  w-screen  py-10">

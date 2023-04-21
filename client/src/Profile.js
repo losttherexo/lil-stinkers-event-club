@@ -53,7 +53,7 @@ function Profile({user, setUser , handleLogout, handleUpdate, tix}){
 
 
     return(
-        <div>
+        <div class='mt-28'>
         <div class="flex flex-col mx-auto max-w-2xl items-center text-center justify-between gap-x-6 p-6  py-10 lg:px-8">
             <h1 class="text-5xl font-bold tracking-tight text-slate-900 text-left py-6">
                 Hi {user && user.first_name} <FontAwesomeIcon icon="fa-solid fa-user-secret"/>

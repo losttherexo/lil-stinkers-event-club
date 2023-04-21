@@ -30,7 +30,7 @@ function Events({eventsArray, addEvent, user}){
 
 
     return(
-        <div>
+        <div class='mt-28'>
             <div>
                 <div  class='flex flex-col justify-center text-center items-center'>
                     <h1 class='p-6 my-3 text-4xl font-bold'>Upcoming Events</h1>

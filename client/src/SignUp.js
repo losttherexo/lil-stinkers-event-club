@@ -109,7 +109,7 @@ function SignUp({ setUser }) {
   // }
 
     return (
-        <div>
+        <div class='mt-28'>
             <form onSubmit={formik.handleSubmit} class="mx-auto mt-16 max-w-sm sm:mt-20">
                 <div class="mx-auto max-w-2xl text-center justify-between gap-x-6 p-6 lg:px-8">
                     <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">Sign Up</h2>
