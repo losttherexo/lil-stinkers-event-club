@@ -59,7 +59,7 @@ function Profile({user, setUser , handleLogout, handleUpdate, tix}){
                 Hi {user && user.first_name} <FontAwesomeIcon icon="fa-solid fa-user-secret"/>
             </h1>
 
-            <div class="grid grid-cols-3 gap-8 w-screen max-w-3xl py-10 content-center">
+            <div class="grid grid-cols-2 gap-8 w-screen max-w-3xl py-10 content-center">
                 <div class="col-span-2 text-left px-12 justify-left py-10 border rounded shadow-md">
                     <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-3xl py-6">Your Information</h2>
                     <div class="text-left">
@@ -68,11 +68,11 @@ function Profile({user, setUser , handleLogout, handleUpdate, tix}){
                     <h3 class="text-xl tracking-tight text-slate-900 py-2"><FontAwesomeIcon icon="fa-solid fa-cake-candles"/> : {formattedDate}</h3>
                     </div>
                 </div>
-                <div class=' grid grid-row content-center gap-8'>
+            </div>
+                <div class='flex flex-row justify-center gap-8'>
                     <button onClick={toggleModal} class="w-32 h-12 mx-1 rounded-md bg-amber-300  text-center text-md font-semibold text-slate-950 shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-950 border-solid border-2 border-slate-950"><Link to="./">Delete User</Link></button>
                     <button onClick={handleHideEditForm} class="w-32 h-12 mx-1  my-10.5 rounded-md bg-slate-900  text-center text-md font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-950" >{hideEditForm ? 'Edit User' : 'Close Edit Form'}</button>
                 </div>
-            </div>
 
             <div class='flex'>
                 <EditForm user={user} setUser={setUser} handleUpdate={handleUpdate} hide={hideEditForm}/>
@@ -87,7 +87,7 @@ function Profile({user, setUser , handleLogout, handleUpdate, tix}){
                 </div>
             )}
         </div>
-        <div class="max-w-2xl content-center mx-auto py-10 justify-between w-screen max-w-4xl ">
+        <div class="max-w-2xl content-center mx-auto py-10 justify-between w-screen ">
                     <div class=' border rounded shadow-md gap-6 justify-center text-center items-center '>
                         <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-3xl text-center p-6">Your Upcoming Events</h2>
                         <div class="grid-flow-col auto-cols-2 p-6 py-10 lg:px-8">
