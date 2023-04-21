@@ -83,7 +83,8 @@ function Profile({user, setUser , handleLogout, handleUpdate, tix}){
                 <div className="fixed top-0 left-0 w-full h-full bg-gray-500 bg-opacity-50 flex justify-center items-center">
                     <div className="bg-white rounded shadow p-4">
                         <h2 class='py-2'>Are you sure you don't wanna vibe?</h2>
-                        <button onClick={handleDelete} className="hover:bg-slate-900 hover:text-white border shadow font-bold px-4 rounded">Pls get me out of here</button>
+                            <button onClick={handleDelete} className="mx-2 hover:bg-slate-900 hover:text-white border shadow font-bold px-4 rounded">Pls get me out of here</button>
+                            <button onClick={toggleModal} className="mx-2 hover:bg-slate-900 hover:text-white border shadow font-bold px-4 rounded">Nevermind I like yall</button>
                     </div>
                 </div>
             )}
