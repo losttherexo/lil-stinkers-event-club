@@ -16,7 +16,7 @@ class Fan(db.Model, SerializerMixin):
     last_name = db.Column(db.String, nullable=False)
     dob = db.Column(db.String, nullable=False)
 
-    tickets = db.relationship('Ticket', backref='fan')
+    tickets = db.relationship('Ticket', backref='fan', cascade='all, delete')
 
     @hybrid_property
     def password_hash(self):
@@ -76,7 +76,3 @@ class Ticket(db.Model, SerializerMixin):
 
     fan_id = db.Column(db.Integer, db.ForeignKey('fans.id'), nullable=False)
     event_id = db.Column(db.Integer, db.ForeignKey('events.id'), nullable=False)
-
-
-
-# git push test
