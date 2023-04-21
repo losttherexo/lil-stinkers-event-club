@@ -9,7 +9,7 @@ function BuyTicket({event, user}){
       };
 
     
-    const handleClick = () => { 
+    const handleClick = () => {
         setIsOpen(!isOpen)
         fetch("/tickets", {
             method: "POST",
