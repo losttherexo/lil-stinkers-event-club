@@ -66,7 +66,7 @@ function Profile({user, setUser , handleLogout, handleUpdate, tix, deleteEvent})
                     <div class="text-left">
                     <h3 class="text-xl tracking-tight text-slate-900 py-2"><FontAwesomeIcon icon="fa-solid fa-signature"/> : {user && user.first_name} {user && user.last_name}</h3>
                     <h3 class="text-xl tracking-tight text-slate-900 py-2"><FontAwesomeIcon icon="fa-solid fa-envelope-circle-check"/> : {user && user.email}</h3>
-                    {/* <h3 class="text-xl tracking-tight text-slate-900 py-2"><FontAwesomeIcon icon="fa-solid fa-cake-candles"/> : {user && user.dob}</h3> */}
+                    <h3 class="text-xl tracking-tight text-slate-900 py-2"><FontAwesomeIcon icon="fa-solid fa-cake-candles"/> : {user && formattedDate}</h3>
                     </div>
                 </div>
             </div>

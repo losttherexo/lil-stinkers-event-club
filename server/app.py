@@ -77,11 +77,7 @@ class Login(Resource):
         flash("Login Successful!")
         session.permanent = True
         session['fan_id'] = user.id
-        return jsonify({
-            "id": user.id,
-            "email": user.email,
-            "first_name": user.first_name
-        })
+        return user.to_dict(), 201
 
 
 class Logout(Resource):
