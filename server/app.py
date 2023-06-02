@@ -175,7 +175,7 @@ class Tickets(Resource):
         )
         db.session.add(new_ticket)
         db.session.commit()
-        return {'message': '201, a new ticket has been added!'}, 201
+        return make_response(new_ticket.to_dict(), 201)
 
 class TicketByID(Resource):
     def get(self, id):

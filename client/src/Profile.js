@@ -7,8 +7,9 @@ function Profile({user, setUser , handleLogout, handleUpdate, tix, deleteEvent})
     const navigate = useNavigate()
     const [hideEditForm, setHideEditForm] = useState(true)
     const [isOpen, setIsOpen] = useState(false);
+    console.log(tix, user.id)
     const tixComponents = tix
-        .filter(ticket => ticket.fan_id === user?.id)
+        .filter(ticket => ticket.fan_id == user.id)
         .map(ticket => <TicketCard key={ticket.id} deleteEvent={deleteEvent} ticket={ticket} event={ticket.event.name} date={ticket.event.date} location={ticket.event.venue.name} image={ticket.event.image}/>)
 
     const toggleModal = () => {
@@ -92,7 +93,7 @@ function Profile({user, setUser , handleLogout, handleUpdate, tix, deleteEvent})
                     <div class=' border rounded shadow-md gap-6 justify-center text-center items-center '>
                         <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-3xl text-center p-6">Your Upcoming Events</h2>
                         <div class="grid-flow-col auto-cols-2 p-6 py-10 lg:px-8">
-                            {tixComponents}
+                            {tix && tixComponents}
                         </div>
                     </div>
                 </div>
