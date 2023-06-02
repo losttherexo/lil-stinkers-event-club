@@ -1,7 +1,9 @@
 import React, {useState} from 'react'
 
-function BuyTicket({event, user}){
+function BuyTicket({event, user, tixArray, setTixArray}){
 
+
+    console.log(tixArray)
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleModal = () => {
@@ -22,8 +24,9 @@ function BuyTicket({event, user}){
             }),
         })
         .then((r) => r.json())
-        console.log(event.id)
-        console.log(user.id)
+        .then((newTix) => {
+            setTixArray([...tixArray, newTix])
+        })
     }
 
     return (

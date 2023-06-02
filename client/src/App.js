@@ -83,7 +83,7 @@ function App() {
                     <Route path="/" element={<Home user={user} eventsArray={eventsArray}/>} />
                     <Route path="/venues" element={<Venues venuesArray={venuesArray}/>} />
                     {/* <Route path="/events" element={<Events eventsArray={eventsArray} search={search}/>} /> */}
-                    <Route path="/events" element={<Events addEvent={addEvent} eventsArray={eventsArray} user={user}/>} />
+                    <Route path="/events" element={<Events addEvent={addEvent} eventsArray={eventsArray} user={user} tixArray={tixArray} setTixArray={setTixArray}/>} />
                     <Route path="/login" element={<Login handleLogin={handleLogin}/>} />
                     <Route path="/signup" element={<SignUp />} />
                     <Route path="/profile" element={<Profile user={user} handleLogout={handleLogout} handleUpdate={handleUpdate} setUser={setUser} tix={tixArray} deleteEvent={deleteEvent}/>} />

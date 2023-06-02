@@ -27,31 +27,31 @@ function SignUp({ setUser }) {
 
     const formSchema = yup.object().shape({
         email: yup
-        .string()
-        .email("Invalid email")
-        .required('required'),
+            .string()
+            .email("Invalid email")
+            .required('required'),
         password: yup
-        .string()
-        .required('required')
-        .min(8, 'Password must be 8 characters long')
-        .matches(/[0-9]/, 'Password requires a number')
-        .matches(/[a-z]/, 'Password requires a lowercase letter')
-        .matches(/[A-Z]/, 'Password requires an uppercase letter')
-        .matches(/[^\w]/, 'Password requires a symbol'),
+            .string()
+            .required('required')
+            .min(8, 'Password must be 8 characters long')
+            .matches(/[0-9]/, 'Password requires a number')
+            .matches(/[a-z]/, 'Password requires a lowercase letter')
+            .matches(/[A-Z]/, 'Password requires an uppercase letter')
+            .matches(/[^\w]/, 'Password requires a symbol'),
         password_confirmation: yup
-        .string()
-        .required('required')
-        .oneOf([yup.ref('password'), null], 'Must match "password" field value'),
+            .string()
+            .required('required')
+            .oneOf([yup.ref('password'), null], 'Must match "password" field value'),
         first_name: yup
-        .string()
-        .required('required'),
+            .string()
+            .required('required'),
         last_name: yup
-        .string()
-        .required('required'),
+            .string()
+            .required('required'),
         dob: yup
-        .date()
-        .max(new Date(Date.now() - 567648000000), "You must be at least 18 years")
-        .required('required')
+            .date()
+            .max(new Date(Date.now() - 567648000000), "You must be at least 18 years")
+            .required('required')
     })
 
     const formik = useFormik({

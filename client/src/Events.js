@@ -3,7 +3,7 @@ import EventCard from './EventCard'
 import AddEventForm from './AddEventForm'
 
 
-function Events({eventsArray, addEvent, user}){
+function Events({eventsArray, addEvent, user, tixArray, setTixArray}){
 
     const eventComponents = eventsArray.map(event =>
         <EventCard
@@ -18,6 +18,8 @@ function Events({eventsArray, addEvent, user}){
             location={event.venue.name}
             event={event}
             user={user}
+            tixArray = {tixArray}
+            setTixArray = {setTixArray}
         />
     )
 

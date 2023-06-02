@@ -1,7 +1,7 @@
 import React from "react"
 import BuyTicket from "./BuyTicket"
 
-function EventCard({name, date, description, location, image, age_restriction, price, event, user}){
+function EventCard({name, date, description, location, image, age_restriction, price, event, user, tixArray, setTixArray}){
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -24,7 +24,7 @@ function EventCard({name, date, description, location, image, age_restriction, p
             <p>{age_restriction ? "This event is 18 and up" : null}</p>
             <div class='flex flex-row justify-center pt-2'>
                 <p>${price}</p>
-                <BuyTicket event={event} user={user}/>
+                <BuyTicket event={event} user={user} tixArray={tixArray} setTixArray={setTixArray}/>
             </div>
         </div>
     )

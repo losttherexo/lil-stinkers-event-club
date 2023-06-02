@@ -69,9 +69,6 @@ class Login(Resource):
         password = request.get_json().get('password')
         user = Fan.query.filter(Fan.email == email).first()
 
-        # password = request.get_json()['password']
-
-        # if user.authenticate(password):
         if user is None:
             return {'error': 'Invalid email or password'}, 401
         if not bcrypt.check_password_hash(user._password_hash, password):

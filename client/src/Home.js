@@ -25,7 +25,7 @@ function Home({user, eventsArray}) {
   };
 
   const handleClose = () => {
-    setSelectedMarker(null);
+    // setSelectedMarker(null);``
   };
 
 
