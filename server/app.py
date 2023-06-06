@@ -1,35 +1,13 @@
-#!/usr/bin/env python3
-
-# Standard library imports
-
-# Remote library imports
 from flask import Flask, make_response, jsonify, request, session, flash
 from flask_restful import Resource, Api
 from flask_migrate import Migrate
-
-# Local imports
 from config import app, db, api, bcrypt
 from models import Fan, Ticket, Venue, Event
 
-# Views go here!
 class HomePage(Resource):
     def get(self):
         return {'message': '200: Welcome to our Home Page'}, 200
 
-# class SignUp(Resource):
-#     def post(self):
-#         data=request.get_json()
-#         new_fan = Fan(
-#             username=data['username'],
-#             # password = data['password'],
-#             # password_confirmation = data['password_confirmation'],
-#             first_name=data['first_name'],
-#             last_name=data['last_name'],
-#             dob=data['dob'],
-#         )
-#         db.session.add(new_fan)
-#         db.session.commit()
-#         return {'message': '201, a new fan has been added!'}, 201
 class SignUp(Resource):
     def post(self):
         email = request.json['email']
@@ -318,7 +296,7 @@ class Events(Resource):
         )
         db.session.add(new_event)
         db.session.commit()
-        return {'message': '201, a new event has been created!'}, 201
+        return new_event.to_dict(), 201
 
 class EventByID(Resource):
     def get(self, id):
