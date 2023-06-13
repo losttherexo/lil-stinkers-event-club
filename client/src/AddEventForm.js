@@ -23,7 +23,6 @@ function AddEventForm({addEvent}){
             price: price,
             venue_id: venue
         }
-        console.log(newEvent)
         // addEvent(newEvent)
 
         fetch('http://localhost:5555/events', {
@@ -31,15 +30,6 @@ function AddEventForm({addEvent}){
         headers: {'Content-Type' : 'application/json'},
         body: JSON.stringify(newEvent)
         })
-
-        // setName('')
-        // setDate('')
-        // setDescription('')
-        // setImage('')
-        // setAgeRestriction('')
-        // setPrice('')
-        // setVenue('')
-
     }
 
 

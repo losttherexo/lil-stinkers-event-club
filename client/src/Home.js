@@ -33,7 +33,6 @@ function Home({user, eventsArray}) {
         fetch('http://localhost:5555/venues')
             .then(r => r.json())
             .then(data => {
-                console.log(data)
                 setCoordinates(data);
             })
     },[])

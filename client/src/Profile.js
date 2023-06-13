@@ -7,14 +7,12 @@ function Profile({user, setUser , handleLogout, handleUpdate, tix, deleteEvent})
     const navigate = useNavigate()
     const [hideEditForm, setHideEditForm] = useState(true)
     const [isOpen, setIsOpen] = useState(false);
-    console.log(tix, user.id)
     const tixComponents = tix
         .filter(ticket => ticket.fan_id == user.id)
         .map(ticket => <TicketCard key={ticket.id} deleteEvent={deleteEvent} ticket={ticket} event={ticket.event.name} date={ticket.event.date} location={ticket.event.venue.name} image={ticket.event.image}/>)
 
     const toggleModal = () => {
       setIsOpen(!isOpen);
-      console.log('yes')
     };
 
     const handleHideEditForm = () => {

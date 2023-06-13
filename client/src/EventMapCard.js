@@ -4,10 +4,8 @@ import BuyTicket from "./BuyTicket"
 
 function EventMapCard({name, image, location, latitude, longtitude, setLat, setLng, description, price, ageRestriction, venue, user, event}) {
     function handleCoordinates() {
-
         setLat(latitude)
         setLng(longtitude)
-
     }
 
     const [isOpen, setIsOpen] = useState(false);

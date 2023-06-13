@@ -27,7 +27,6 @@ function Login({ handleLogin }) {
             headers: {
                 "Content-Type": "application/json",
             },
-        // body: JSON.stringify({ username}),
             body: JSON.stringify({ email, password }),
         }).then((r) => {
             if (r.ok) {
