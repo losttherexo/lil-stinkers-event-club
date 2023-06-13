@@ -3,6 +3,7 @@ from flask_restful import Resource, Api
 from flask_migrate import Migrate
 from config import app, db, api, bcrypt
 from models import Fan, Ticket, Venue, Event
+from datetime import datetime
 
 class HomePage(Resource):
     def get(self):
@@ -24,16 +25,20 @@ class SignUp(Resource):
 
         hashed_password = bcrypt.generate_password_hash(password)
         hashed_password_confirmation = bcrypt.generate_password_hash(password_confirmation)
+
+        dob_date = datetime.strptime(dob, '%Y-%m-%d').date()
+
         new_fan = Fan(
             email=email,
             _password_hash=hashed_password,
-            password_confirmation = hashed_password_confirmation,
+            password_confirmation=hashed_password_confirmation,
             first_name=firstname,
             last_name=lastname,
-            dob=dob
+            dob=dob_date
         )
         db.session.add(new_fan)
         db.session.commit()
+
         return jsonify({
             "id": new_fan.id,
             "email": new_fan.email

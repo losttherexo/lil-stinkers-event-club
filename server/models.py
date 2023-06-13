@@ -14,7 +14,7 @@ class Fan(db.Model, SerializerMixin):
     password_confirmation = db.Column(db.String, nullable=False)
     first_name = db.Column(db.String, nullable=False)
     last_name = db.Column(db.String, nullable=False)
-    dob = db.Column(db.String, nullable=False)
+    dob = db.Column(db.Date, nullable=False)
 
     tickets = db.relationship('Ticket', backref='fan', cascade='all, delete')
 

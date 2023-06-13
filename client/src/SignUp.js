@@ -50,7 +50,7 @@ function SignUp({ setUser }) {
             .required('required'),
         dob: yup
             .date()
-            .max(new Date(Date.now() - 567648000000), "You must be at least 18 years")
+            .max(new Date(Date.now() - 504921600000), "You must be at least 16 years of age")
             .required('required')
     })
 
@@ -65,19 +65,30 @@ function SignUp({ setUser }) {
         },
         validationSchema: formSchema,
         onSubmit: (values) => {
+            // Convert dob to a JavaScript Date object
+            const dobDate = new Date(values.dob);
+          
+            // Convert dobDate to a string in the format "YYYY-MM-DD"
+            const dobString = dobDate.toISOString().split("T")[0];
+          
+            // Update the values object with the converted dobString
+            const updatedValues = { ...values, dob: dobString };
+          
             fetch("/signup", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(values, null, 2),
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(updatedValues),
             }).then((r) => {
-                if (r.ok) {
-                    r.json().then((user) => setUser(user));
-                }
+              if (r.ok) {
+                r.json().then((user) => setUser(user));
+              }
             });
-            navigate('/login')
-        },
+          
+            navigate('/login');
+          },
+          
     });
 
     const [show, setShow] = useState(false)
@@ -85,28 +96,6 @@ function SignUp({ setUser }) {
     const handleShow = () => {
         setShow(!show)
     }
-  // function handleSubmit(e) {
-  //   e.preventDefault();
-  //   fetch("/signup", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       username,
-  //       password,
-  //       passwordConfirmation,
-  //       first_name: firstName,
-  //       last_name: lastName,
-  //       dob: dob
-  //     }),
-  //   }).then((r) => {
-  //     if (r.ok) {
-  //       r.json().then((user) => setUser(user));
-  //     }
-  //   })
-  //   navigate('/login')
-  // }
 
     return (
         <div class='mt-28'>
