@@ -60,12 +60,12 @@ function Home({user, eventsArray}) {
     )
 
   return (
-    <div class='mt-28'>
-        <h1 class="text-5xl text-center font-bold tracking-tight text-slate-900 py-6">The Lil Stinker's Event Club</h1>
-        <p class="text-xl text-center font-md tracking-tight text-slate-900 pb-4">A hub for Lil Stinker's to find local events or host the afterparty!</p>
-        <div class="grid md:grid-rows-none lg:grid-cols-4 w-screen">
-            <div class="col-span-2 md:text-center lg:text-left md:items-center lg:items-left md:pt-16 ">
-              <div class='flex h-[28rem] items-center'>
+    <div className='mt-28'>
+        <h1 className="text-5xl text-center font-bold tracking-tight text-slate-900 py-6">The Lil Stinker's Event Club</h1>
+        <p className="text-xl text-center font-md tracking-tight text-slate-900 pb-4">A hub for Lil Stinker's to find local events or host the afterparty!</p>
+        <div className="grid md:grid-rows-none lg:grid-cols-4 w-screen">
+            <div className="col-span-2 md:text-center lg:text-left md:items-center lg:items-left md:pt-16 ">
+              <div className='flex h-[28rem] items-center'>
                 <Map
                     mapboxAccessToken={'pk.eyJ1IjoiYmFvdmluaDI3MDkiLCJhIjoiY2xnbzZlaG1vMGJtZjNsbGgwYTE2OHp5bSJ9.X4lEWBmesW4LKgSWp5G6LQ'}
                     style={{borderRadius: "15px", border: "2px solid black", margin: '30px'}}
@@ -119,9 +119,9 @@ function Home({user, eventsArray}) {
 
               </div>
             </div>
-            <div class='py-10 gap-6 flex flex-col col-span-2 justify-center text-center items-center'>
-                <div class=' gap-6 justify-center text-center items-center '>
-                    <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-3xl text-center px-6">Upcoming Events</h2>
+            <div className='py-10 gap-6 flex flex-col col-span-2 justify-center text-center items-center'>
+                <div className=' gap-6 justify-center text-center items-center '>
+                    <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-3xl text-center px-6">Upcoming Events</h2>
                     {eventComponents}
                 </div>
             </div>

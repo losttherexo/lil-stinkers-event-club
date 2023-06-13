@@ -20,10 +20,10 @@ function Navbar({user, setUser, onLogout}) {
         );
     }
     return(
-        <header class="bg-slate-900 fixed w-full z-10 top-0">
-            <nav class="mx-auto flex max-w-7xl items-center justify-between gap-x-6 p-6 lg:px-8">
-                <div class="hidden lg:flex lg:gap-x-12">
-                    <h1 className="NavLink" to='/' end>Lil Stinker's Event Club</h1>
+        <header className="bg-slate-900 fixed w-full z-10 top-0">
+            <nav className="mx-auto flex max-w-7xl items-center justify-between gap-x-6 p-6 lg:px-8">
+                <div className="hidden lg:flex lg:gap-x-12">
+                    <h1 className="NavLink" to='/'>Lil Stinker's Event Club</h1>
                     <NavLink className="NavLink" to = "./" end>Home <FontAwesomeIcon icon="fa-solid fa-house"/></NavLink>
                     <NavLink className="NavLink" to = "/venues">Venues <FontAwesomeIcon icon="fa-solid fa-map-location"/></NavLink>
                     <NavLink className="NavLink" to = "/events">Events <FontAwesomeIcon icon="fa-solid fa-champagne-glasses"/></NavLink>
@@ -37,7 +37,7 @@ function Navbar({user, setUser, onLogout}) {
                     <Link className="signup" to="/signup">Sign Up</Link>
                 </div> */}
                 {user ? (
-                    <div class="flex justify-between gap-x-6">
+                    <div className="flex justify-between gap-x-6">
                         <p className="logout"><FontAwesomeIcon icon="fa-solid fa-poo"/> Welcome, {user?.first_name}!</p>
                         <Link className="logoutbtn" to="/login" onClick={handleLogout}>Logout <FontAwesomeIcon icon="fa-solid fa-power-off"/></Link>
                     </div>
