@@ -2,8 +2,6 @@ import React, {useState} from 'react'
 
 function BuyTicket({event, user, tixArray, setTixArray}){
 
-
-    console.log(tixArray)
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleModal = () => {
