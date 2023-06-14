@@ -29,7 +29,7 @@ function BuyTicket({event, user, tixArray, setTixArray}){
 
     return (
         <div>
-            <button onClick={handleClick} class='bg-slate-900 text-white border rounded-lg shadow-md mx-2 px-2 hover:bg-white hover:text-slate-900'>
+            <button onClick={handleClick} className='bg-slate-900 text-white border rounded-lg shadow-md mx-2 px-2 hover:bg-white hover:text-slate-900'>
                 Buy Tix
             </button>
             {isOpen && (
